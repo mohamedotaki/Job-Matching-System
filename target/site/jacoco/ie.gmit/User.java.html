@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>User.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">practiceMaven2</a> &gt; <a href="index.source.html" class="el_package">ie.gmit</a> &gt; <span class="el_source">User.java</span></div><h1>User.java</h1><pre class="source lang-java linenums">package ie.gmit;
+
+import java.util.Objects;
+
+public class User {
+
+	private String id;
+	private String title;
+	private String name;
+	private String email;
+	private String password;
+	private String phoneNum;
+	private String location;
+
+<span class="fc" id="L15">	public User(String id, String title, String name, String email, String password, String phoneNum, String location) {</span>
+<span class="fc" id="L16">		setId(id);</span>
+<span class="fc" id="L17">		setTitle(title);</span>
+<span class="fc" id="L18">		setName(name);</span>
+<span class="fc" id="L19">		setEmail(email);</span>
+<span class="fc" id="L20">		setPassword(password);</span>
+<span class="fc" id="L21">		setPhoneNum(phoneNum);</span>
+<span class="fc" id="L22">		setLocation(location);</span>
+<span class="fc" id="L23">	}</span>
+
+	public String getId() {
+<span class="fc" id="L26">		return id;</span>
+	}
+
+	public void setId(String id) {
+<span class="fc bfc" id="L30" title="All 2 branches covered.">		if(id.length() &gt; 0) {</span>
+<span class="fc" id="L31">			this.id = id;</span>
+		}
+		else {
+<span class="fc" id="L34">			throw new IllegalArgumentException(&quot;Invalid ID&quot;);</span>
+		}
+<span class="fc" id="L36">	}</span>
+
+	public String getTitle() {
+<span class="fc" id="L39">		return title;</span>
+	}
+
+	public void setTitle(String title) {
+<span class="fc bfc" id="L43" title="All 6 branches covered.">		if(title.equals(&quot;Mr&quot;) || title.equals(&quot;Mrs&quot;) || title.equals(&quot;Miss&quot;) )</span>
+		{
+<span class="fc" id="L45">			this.title = title;</span>
+		}
+		else
+		{
+<span class="fc" id="L49">			throw new IllegalArgumentException(&quot;Invalid Title Error - Please choose Mr, Mrs or Miss&quot;);</span>
+		}
+<span class="fc" id="L51">	}</span>
+
+	public String getName() {
+<span class="fc" id="L54">		return name;</span>
+	}
+
+	public void setName(String name) {
+<span class="fc bfc" id="L58" title="All 4 branches covered.">		if(name.length() &gt;= 5 &amp;&amp;  name.length() &lt;= 22)</span>
+		{
+<span class="fc" id="L60">			this.name = name;</span>
+		}
+		else
+		{
+<span class="fc" id="L64">			throw new IllegalArgumentException(&quot;Invalid Name Error - Name must have more than 5 letters and a maximum of 22&quot;);</span>
+		}
+<span class="fc" id="L66">	}</span>
+
+	public String getEmail() {
+<span class="fc" id="L69">		return email;</span>
+	}
+
+	public void setEmail(String email) {
+<span class="fc bfc" id="L73" title="All 2 branches covered.">		if(email.length() &gt; 0)</span>
+		{
+<span class="fc" id="L75">			this.email = email;</span>
+		}
+		else
+		{
+<span class="fc" id="L79">			throw new IllegalArgumentException(&quot;Invalid Email Error&quot;);</span>
+		}
+<span class="fc" id="L81">	}</span>
+
+	public String getPassword() {
+<span class="fc" id="L84">		return password;</span>
+	}
+
+	public void setPassword(String password) {
+<span class="fc bfc" id="L88" title="All 4 branches covered.">		if (password.length() &gt; 8 &amp;&amp; !password.equals(name))</span>
+		{
+<span class="fc" id="L90">			this.password = password;</span>
+		}
+
+		else {
+<span class="fc" id="L94">			String error = &quot;&quot;;</span>
+<span class="fc bfc" id="L95" title="All 2 branches covered.">			if (password.length() &lt; 8) {</span>
+<span class="fc" id="L96">				error = &quot;Invalid Password Error - Must be at least 8 characters&quot;;</span>
+			}
+<span class="fc bfc" id="L98" title="All 2 branches covered.">			if (Objects.equals(password, name)) {</span>
+<span class="fc" id="L99">				error = &quot;Invalid Password Error - Must not match name&quot;;</span>
+			}
+<span class="fc" id="L101">			throw new IllegalArgumentException(error);</span>
+		}
+<span class="fc" id="L103">	}</span>
+
+	public String getPhoneNum() {
+<span class="fc" id="L106">		return phoneNum;</span>
+	}
+
+	public void setPhoneNum(String phoneNum) {
+<span class="fc bfc" id="L110" title="All 2 branches covered.">		if(phoneNum.length() == 10 )</span>
+		{
+<span class="fc" id="L112">			this.phoneNum = phoneNum;</span>
+		}
+		else
+		{
+<span class="fc" id="L116">			throw new IllegalArgumentException(&quot;Invalid Phone Number Error - Phone must be 10 digits&quot;);</span>
+		}
+<span class="fc" id="L118">	}</span>
+
+	public String getLocation() {
+<span class="fc" id="L121">		return location;</span>
+	}
+
+	public void setLocation(String location) {
+<span class="fc bfc" id="L125" title="All 2 branches covered.">		if (location.length() &gt; 2) {</span>
+<span class="fc" id="L126">			this.location = location;</span>
+		}
+		else
+		{
+<span class="fc" id="L130">			throw new IllegalArgumentException(&quot;Invalid location&quot;);</span>
+		}
+<span class="fc" id="L132">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
