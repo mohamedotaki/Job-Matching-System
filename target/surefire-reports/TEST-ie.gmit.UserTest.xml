@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="ie.gmit.UserTest" time="0.067" tests="18" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="ie.gmit.UserTest" time="0.028" tests="18" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -7,76 +7,76 @@
     <property name="java.specification.version" value="1.8"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.class.path" value="C:\RMRProject\target\test-classes;C:\RMRProject\target\classes;C:\Users\small\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.4.2\junit-jupiter-api-5.4.2.jar;C:\Users\small\.m2\repository\org\apiguardian\apiguardian-api\1.0.0\apiguardian-api-1.0.0.jar;C:\Users\small\.m2\repository\org\opentest4j\opentest4j\1.1.1\opentest4j-1.1.1.jar;C:\Users\small\.m2\repository\org\junit\platform\junit-platform-commons\1.4.2\junit-platform-commons-1.4.2.jar;C:\Users\small\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.4.2\junit-jupiter-engine-5.4.2.jar;C:\Users\small\.m2\repository\org\junit\platform\junit-platform-engine\1.4.2\junit-platform-engine-1.4.2.jar;"/>
-    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.class.path" value="C:\Users\mohot\OneDrive - GMIT\Year 4\Software Engineering with test\Job Matching System\target\test-classes;C:\Users\mohot\OneDrive - GMIT\Year 4\Software Engineering with test\Job Matching System\target\classes;C:\Users\mohot\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.4.2\junit-jupiter-api-5.4.2.jar;C:\Users\mohot\.m2\repository\org\apiguardian\apiguardian-api\1.0.0\apiguardian-api-1.0.0.jar;C:\Users\mohot\.m2\repository\org\opentest4j\opentest4j\1.1.1\opentest4j-1.1.1.jar;C:\Users\mohot\.m2\repository\org\junit\platform\junit-platform-commons\1.4.2\junit-platform-commons-1.4.2.jar;C:\Users\mohot\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.4.2\junit-jupiter-engine-5.4.2.jar;C:\Users\mohot\.m2\repository\org\junit\platform\junit-platform-engine\1.4.2\junit-platform-engine-1.4.2.jar;"/>
+    <property name="java.vm.vendor" value="Amazon.com Inc."/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
-    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="java.vendor.url" value="https://aws.amazon.com/corretto/"/>
     <property name="user.timezone" value="Europe/London"/>
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="os.name" value="Windows 10"/>
     <property name="user.country" value="IE"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
-    <property name="sun.boot.library.path" value="F:\Program Files\Java\jdk1.8.0_202\jre\bin"/>
-    <property name="sun.java.command" value="C:\Users\small\AppData\Local\Temp\surefire2724608551988969813\surefirebooter7569783789226182730.jar C:\Users\small\AppData\Local\Temp\surefire2724608551988969813 2021-03-18T18-40-43_841-jvmRun1 surefire4849826743230895882tmp surefire_07412277155228350363tmp"/>
-    <property name="surefire.test.class.path" value="C:\RMRProject\target\test-classes;C:\RMRProject\target\classes;C:\Users\small\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.4.2\junit-jupiter-api-5.4.2.jar;C:\Users\small\.m2\repository\org\apiguardian\apiguardian-api\1.0.0\apiguardian-api-1.0.0.jar;C:\Users\small\.m2\repository\org\opentest4j\opentest4j\1.1.1\opentest4j-1.1.1.jar;C:\Users\small\.m2\repository\org\junit\platform\junit-platform-commons\1.4.2\junit-platform-commons-1.4.2.jar;C:\Users\small\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.4.2\junit-jupiter-engine-5.4.2.jar;C:\Users\small\.m2\repository\org\junit\platform\junit-platform-engine\1.4.2\junit-platform-engine-1.4.2.jar;"/>
+    <property name="sun.boot.library.path" value="C:\Users\mohot\.jdks\corretto-1.8.0_282\jre\bin"/>
+    <property name="sun.java.command" value="C:\Users\mohot\AppData\Local\Temp\surefire7073317443514360170\surefirebooter2797677422041786321.jar C:\Users\mohot\AppData\Local\Temp\surefire7073317443514360170 2021-03-23T00-27-17_945-jvmRun1 surefire8913392666246575543tmp surefire_03010018186271243329tmp"/>
+    <property name="surefire.test.class.path" value="C:\Users\mohot\OneDrive - GMIT\Year 4\Software Engineering with test\Job Matching System\target\test-classes;C:\Users\mohot\OneDrive - GMIT\Year 4\Software Engineering with test\Job Matching System\target\classes;C:\Users\mohot\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.4.2\junit-jupiter-api-5.4.2.jar;C:\Users\mohot\.m2\repository\org\apiguardian\apiguardian-api\1.0.0\apiguardian-api-1.0.0.jar;C:\Users\mohot\.m2\repository\org\opentest4j\opentest4j\1.1.1\opentest4j-1.1.1.jar;C:\Users\mohot\.m2\repository\org\junit\platform\junit-platform-commons\1.4.2\junit-platform-commons-1.4.2.jar;C:\Users\mohot\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.4.2\junit-jupiter-engine-5.4.2.jar;C:\Users\mohot\.m2\repository\org\junit\platform\junit-platform-engine\1.4.2\junit-platform-engine-1.4.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
-    <property name="user.home" value="C:\Users\small"/>
+    <property name="user.home" value="C:\Users\mohot"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
-    <property name="java.home" value="F:\Program Files\Java\jdk1.8.0_202\jre"/>
-    <property name="basedir" value="C:\RMRProject"/>
+    <property name="java.home" value="C:\Users\mohot\.jdks\corretto-1.8.0_282\jre"/>
+    <property name="basedir" value="C:\Users\mohot\OneDrive - GMIT\Year 4\Software Engineering with test\Job Matching System"/>
     <property name="file.separator" value="\"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\small\AppData\Local\Temp\surefire2724608551988969813\surefirebooter7569783789226182730.jar;C:\\Users\\small\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.5\\org.jacoco.agent-0.8.5-runtime.jar"/>
-    <property name="sun.boot.class.path" value="F:\Program Files\Java\jdk1.8.0_202\jre\lib\resources.jar;F:\Program Files\Java\jdk1.8.0_202\jre\lib\rt.jar;F:\Program Files\Java\jdk1.8.0_202\jre\lib\sunrsasign.jar;F:\Program Files\Java\jdk1.8.0_202\jre\lib\jsse.jar;F:\Program Files\Java\jdk1.8.0_202\jre\lib\jce.jar;F:\Program Files\Java\jdk1.8.0_202\jre\lib\charsets.jar;F:\Program Files\Java\jdk1.8.0_202\jre\lib\jfr.jar;F:\Program Files\Java\jdk1.8.0_202\jre\classes"/>
+    <property name="surefire.real.class.path" value="C:\Users\mohot\AppData\Local\Temp\surefire7073317443514360170\surefirebooter2797677422041786321.jar;C:\\Users\\mohot\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.5\\org.jacoco.agent-0.8.5-runtime.jar"/>
+    <property name="sun.boot.class.path" value="C:\Users\mohot\.jdks\corretto-1.8.0_282\jre\lib\resources.jar;C:\Users\mohot\.jdks\corretto-1.8.0_282\jre\lib\rt.jar;C:\Users\mohot\.jdks\corretto-1.8.0_282\jre\lib\sunrsasign.jar;C:\Users\mohot\.jdks\corretto-1.8.0_282\jre\lib\jsse.jar;C:\Users\mohot\.jdks\corretto-1.8.0_282\jre\lib\jce.jar;C:\Users\mohot\.jdks\corretto-1.8.0_282\jre\lib\charsets.jar;C:\Users\mohot\.jdks\corretto-1.8.0_282\jre\lib\jfr.jar;C:\Users\mohot\.jdks\corretto-1.8.0_282\jre\classes"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="java.runtime.version" value="1.8.0_202-b08"/>
-    <property name="user.name" value="small"/>
+    <property name="java.runtime.version" value="1.8.0_282-b08"/>
+    <property name="user.name" value="mohot"/>
     <property name="path.separator" value=";"/>
     <property name="os.version" value="10.0"/>
-    <property name="java.endorsed.dirs" value="F:\Program Files\Java\jdk1.8.0_202\jre\lib\endorsed"/>
-    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="java.endorsed.dirs" value="C:\Users\mohot\.jdks\corretto-1.8.0_282\jre\lib\endorsed"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="file.encoding" value="Cp1252"/>
-    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
-    <property name="localRepository" value="C:\Users\small\.m2\repository"/>
-    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
-    <property name="java.io.tmpdir" value="C:\Users\small\AppData\Local\Temp\"/>
-    <property name="idea.version" value="2020.3.1"/>
-    <property name="java.version" value="1.8.0_202"/>
-    <property name="user.dir" value="C:\RMRProject"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\mohot\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/corretto/corretto-8/issues/"/>
+    <property name="java.io.tmpdir" value="C:\Users\mohot\AppData\Local\Temp\"/>
+    <property name="idea.version" value="2020.3.2"/>
+    <property name="java.version" value="1.8.0_282"/>
+    <property name="user.dir" value="C:\Users\mohot\OneDrive - GMIT\Year 4\Software Engineering with test\Job Matching System"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
     <property name="sun.os.patch.level" value=""/>
-    <property name="java.library.path" value="F:\Program Files\Java\jdk1.8.0_202\jre\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Python27\;C:\Python27\Scripts;C:\ProgramData\Boxstarter;C:\Python39\Scripts\;C:\Python39\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\ProgramData\chocolatey\bin;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Git\cmd;C:\Program Files (x86)\AMD\ATI.ACE\Core-Static;C:\nodejs\installs\;C:\Program Files\Amazon\AWSCLIV2\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\PuTTY\;C:\Users\small\AppData\Local\Microsoft\WindowsApps;C:\Users\small\.dotnet\tools;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.3.1\bin;C:\Program Files\JetBrains\IntelliJ IDEA 2020.3.1\bin;C:\Users\small\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\apache-maven-3.6.3\bin;C:\Users\small\AppData\Local\atom\bin;C:\Users\small\AppData\Roaming\npm;."/>
+    <property name="java.library.path" value="C:\Users\mohot\.jdks\corretto-1.8.0_282\jre\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Git\cmd;C:\nodejs\installs\;C:\Users\mohot\AppData\Local\Microsoft\WindowsApps;C:\Users\mohot\AppData\Local\GitHubDesktop\bin;C:\Users\mohot\AppData\Local\atom\bin;C:\Users\mohot\AppData\Roaming\npm;C:\Program Files\JetBrains\PyCharm 2020.3.3\bin;;."/>
     <property name="java.vm.info" value="mixed mode"/>
-    <property name="java.vendor" value="Oracle Corporation"/>
-    <property name="java.vm.version" value="25.202-b08"/>
-    <property name="java.ext.dirs" value="F:\Program Files\Java\jdk1.8.0_202\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
+    <property name="java.vendor" value="Amazon.com Inc."/>
+    <property name="java.vm.version" value="25.282-b08"/>
+    <property name="java.ext.dirs" value="C:\Users\mohot\.jdks\corretto-1.8.0_282\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="52.0"/>
   </properties>
-  <testcase name="testUserTitlePassMr" classname="ie.gmit.UserTest" time="0.026"/>
-  <testcase name="testUserPasswordFailName" classname="ie.gmit.UserTest" time="0.002"/>
+  <testcase name="testUserTitlePassMr" classname="ie.gmit.UserTest" time="0.001"/>
+  <testcase name="testUserPasswordFailName" classname="ie.gmit.UserTest" time="0.001"/>
   <testcase name="testUserTitlePassMrs" classname="ie.gmit.UserTest" time="0.001"/>
   <testcase name="testUserLocationFail" classname="ie.gmit.UserTest" time="0.001"/>
   <testcase name="testUserLocationPass" classname="ie.gmit.UserTest" time="0.001"/>
-  <testcase name="testUserPhoneFail" classname="ie.gmit.UserTest" time="0.002"/>
-  <testcase name="testUserPhonePass" classname="ie.gmit.UserTest" time="0.001"/>
-  <testcase name="testUserPasswordPass" classname="ie.gmit.UserTest" time="0.001"/>
-  <testcase name="testUserIdFail" classname="ie.gmit.UserTest" time="0.001"/>
+  <testcase name="testUserPhoneFail" classname="ie.gmit.UserTest" time="0.001"/>
+  <testcase name="testUserPhonePass" classname="ie.gmit.UserTest" time="0"/>
+  <testcase name="testUserPasswordPass" classname="ie.gmit.UserTest" time="0"/>
+  <testcase name="testUserIdFail" classname="ie.gmit.UserTest" time="0.002"/>
   <testcase name="testUserIdPass" classname="ie.gmit.UserTest" time="0"/>
   <testcase name="testUserPasswordFailUnder8" classname="ie.gmit.UserTest" time="0.001"/>
-  <testcase name="testUserNameFailOver22" classname="ie.gmit.UserTest" time="0.001"/>
-  <testcase name="testUserNameFailUnder5" classname="ie.gmit.UserTest" time="0"/>
+  <testcase name="testUserNameFailOver22" classname="ie.gmit.UserTest" time="0"/>
+  <testcase name="testUserNameFailUnder5" classname="ie.gmit.UserTest" time="0.001"/>
   <testcase name="testUserEmailFail" classname="ie.gmit.UserTest" time="0.001"/>
   <testcase name="testUserEmailPass" classname="ie.gmit.UserTest" time="0.001"/>
-  <testcase name="testUserTitleFail" classname="ie.gmit.UserTest" time="0.001"/>
-  <testcase name="testUserTitlePassMiss" classname="ie.gmit.UserTest" time="0"/>
-  <testcase name="testUserNamePass" classname="ie.gmit.UserTest" time="0"/>
+  <testcase name="testUserTitleFail" classname="ie.gmit.UserTest" time="0.002"/>
+  <testcase name="testUserTitlePassMiss" classname="ie.gmit.UserTest" time="0.001"/>
+  <testcase name="testUserNamePass" classname="ie.gmit.UserTest" time="0.001"/>
 </testsuite>
