@@ -2,14 +2,17 @@ package ie.gmit;
 
 import java.util.ArrayList;
 
-public class Employee {
+public class Employee extends User{
     private String degree;
     private ArrayList<Skill> skills;
 
-    public Employee(String degree, ArrayList<Skill> skills) {
+
+    public Employee(String id, String title, String name, String email, String password, String phoneNum, String location, String degree, ArrayList<Skill> skills) {
+        super(id, title, name, email, password, phoneNum, location);
         setDegree(degree);
         setSkills(skills);
     }
+
 
     public String getDegree() {
         return degree;
