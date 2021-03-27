@@ -23,7 +23,11 @@ jobs:
           name: Test
           command: mvn package
       - store_artifacts:
-          path:  target
+          path:  target/site/jacoco/ie.gmit
+      - store_artifacts:
+          path:  target/surefire-reports
+      - store_artifacts:
+          path:  target/site/jacoco
 
 workflows:
   # Below is the definition of your workflow.
