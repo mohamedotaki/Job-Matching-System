@@ -23,7 +23,7 @@ jobs:
           name: Test
           command: mvn package
       - store_artifacts:
-          path:  target/site/jacoco/ie.gmit
+          path:  target/site/jacoco
       - store_artifacts:
           path:  target/surefire-reports
 
