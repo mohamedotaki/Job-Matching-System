@@ -56,4 +56,4 @@ jobs:
         - checkout
         - run:
             name: Test
-            command: git merge pr/10
+            command: git merge pr
