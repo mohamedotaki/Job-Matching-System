@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="ie.gmit.UserTest" time="0.024" tests="18" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="ie.gmit.UserTest" time="0.029" tests="18" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -18,7 +18,7 @@
     <property name="user.country" value="IE"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Users\mohot\.jdks\corretto-1.8.0_282\jre\bin"/>
-    <property name="sun.java.command" value="C:\Users\mohot\AppData\Local\Temp\surefire5614501966517818229\surefirebooter1657527526100013174.jar C:\Users\mohot\AppData\Local\Temp\surefire5614501966517818229 2021-03-29T16-24-39_187-jvmRun1 surefire6217403776674796959tmp surefire_07546796172798713171tmp"/>
+    <property name="sun.java.command" value="C:\Users\mohot\AppData\Local\Temp\surefire4396930057258093229\surefirebooter6832548372590310915.jar C:\Users\mohot\AppData\Local\Temp\surefire4396930057258093229 2021-03-25T16-36-43_565-jvmRun1 surefire174461326985717742tmp surefire_03352829999344373953tmp"/>
     <property name="surefire.test.class.path" value="C:\Users\mohot\OneDrive - GMIT\Year 4\Software Engineering with test\Job Matching System\target\test-classes;C:\Users\mohot\OneDrive - GMIT\Year 4\Software Engineering with test\Job Matching System\target\classes;C:\Users\mohot\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.4.2\junit-jupiter-api-5.4.2.jar;C:\Users\mohot\.m2\repository\org\apiguardian\apiguardian-api\1.0.0\apiguardian-api-1.0.0.jar;C:\Users\mohot\.m2\repository\org\opentest4j\opentest4j\1.1.1\opentest4j-1.1.1.jar;C:\Users\mohot\.m2\repository\org\junit\platform\junit-platform-commons\1.4.2\junit-platform-commons-1.4.2.jar;C:\Users\mohot\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.4.2\junit-jupiter-engine-5.4.2.jar;C:\Users\mohot\.m2\repository\org\junit\platform\junit-platform-engine\1.4.2\junit-platform-engine-1.4.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\mohot"/>
@@ -31,7 +31,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\mohot\AppData\Local\Temp\surefire5614501966517818229\surefirebooter1657527526100013174.jar;C:\\Users\\mohot\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.5\\org.jacoco.agent-0.8.5-runtime.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\mohot\AppData\Local\Temp\surefire4396930057258093229\surefirebooter6832548372590310915.jar;C:\\Users\\mohot\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.5\\org.jacoco.agent-0.8.5-runtime.jar"/>
     <property name="sun.boot.class.path" value="C:\Users\mohot\.jdks\corretto-1.8.0_282\jre\lib\resources.jar;C:\Users\mohot\.jdks\corretto-1.8.0_282\jre\lib\rt.jar;C:\Users\mohot\.jdks\corretto-1.8.0_282\jre\lib\sunrsasign.jar;C:\Users\mohot\.jdks\corretto-1.8.0_282\jre\lib\jsse.jar;C:\Users\mohot\.jdks\corretto-1.8.0_282\jre\lib\jce.jar;C:\Users\mohot\.jdks\corretto-1.8.0_282\jre\lib\charsets.jar;C:\Users\mohot\.jdks\corretto-1.8.0_282\jre\lib\jfr.jar;C:\Users\mohot\.jdks\corretto-1.8.0_282\jre\classes"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
@@ -62,21 +62,21 @@
     <property name="java.class.version" value="52.0"/>
   </properties>
   <testcase name="testUserTitlePassMr" classname="ie.gmit.UserTest" time="0.001"/>
-  <testcase name="testUserPasswordFailName" classname="ie.gmit.UserTest" time="0.002"/>
+  <testcase name="testUserPasswordFailName" classname="ie.gmit.UserTest" time="0.001"/>
   <testcase name="testUserTitlePassMrs" classname="ie.gmit.UserTest" time="0.001"/>
   <testcase name="testUserLocationFail" classname="ie.gmit.UserTest" time="0.001"/>
-  <testcase name="testUserLocationPass" classname="ie.gmit.UserTest" time="0.001"/>
-  <testcase name="testUserPhoneFail" classname="ie.gmit.UserTest" time="0.001"/>
-  <testcase name="testUserPhonePass" classname="ie.gmit.UserTest" time="0.001"/>
+  <testcase name="testUserLocationPass" classname="ie.gmit.UserTest" time="0"/>
+  <testcase name="testUserPhoneFail" classname="ie.gmit.UserTest" time="0"/>
+  <testcase name="testUserPhonePass" classname="ie.gmit.UserTest" time="0"/>
   <testcase name="testUserPasswordPass" classname="ie.gmit.UserTest" time="0"/>
   <testcase name="testUserIdFail" classname="ie.gmit.UserTest" time="0"/>
   <testcase name="testUserIdPass" classname="ie.gmit.UserTest" time="0"/>
   <testcase name="testUserPasswordFailUnder8" classname="ie.gmit.UserTest" time="0.001"/>
-  <testcase name="testUserNameFailOver22" classname="ie.gmit.UserTest" time="0.001"/>
+  <testcase name="testUserNameFailOver22" classname="ie.gmit.UserTest" time="0"/>
   <testcase name="testUserNameFailUnder5" classname="ie.gmit.UserTest" time="0.001"/>
   <testcase name="testUserEmailFail" classname="ie.gmit.UserTest" time="0.001"/>
-  <testcase name="testUserEmailPass" classname="ie.gmit.UserTest" time="0"/>
-  <testcase name="testUserTitleFail" classname="ie.gmit.UserTest" time="0"/>
-  <testcase name="testUserTitlePassMiss" classname="ie.gmit.UserTest" time="0"/>
+  <testcase name="testUserEmailPass" classname="ie.gmit.UserTest" time="0.001"/>
+  <testcase name="testUserTitleFail" classname="ie.gmit.UserTest" time="0.002"/>
+  <testcase name="testUserTitlePassMiss" classname="ie.gmit.UserTest" time="0.001"/>
   <testcase name="testUserNamePass" classname="ie.gmit.UserTest" time="0.001"/>
 </testsuite>

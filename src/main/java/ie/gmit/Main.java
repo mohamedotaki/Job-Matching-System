@@ -5,13 +5,12 @@ import java.util.Scanner;
 
 
 public class Main {
-    static DataBase dataBase = new DataBase();
-    static ArrayList<User> users;
+
+    static ArrayList<User> users = new ArrayList<>();
     int userIdCount = users.size() + 1;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
         boolean loggedIn = false;
         while (true) {
             System.out.println("Please enter 1 to login or 2 to register");
@@ -25,12 +24,8 @@ public class Main {
                     String email = scanner.nextLine();
                     System.out.println("Password:");
                     String password = scanner.nextLine();
-                    User currentUser = login(email, password);
-                    if(currentUser != null) {
-                        loggedIn = true;
-                    }
+                    loggedIn = login(email, password);
                     while (loggedIn) {
-                        if(currentUser instanceof Employer)
                         System.out.println("1-Show matched jobs\n2-Show all available jobs\n" +
                                 "3-Logout");
                         switch (scanner.nextLine()) {
@@ -56,13 +51,13 @@ public class Main {
     }
 
 
-    static User login(String email, String password) {
+    static boolean login(String email, String password) {
         for (int i = 0; i < users.size(); i++) {
             if (users.get(i).getEmail().equalsIgnoreCase(email) && users.get(i).getPassword().equals(password)) {
-                return users.get(i);
+                return true;
             }
         }
-        throw new IllegalArgumentException("ss");
+        return false;
     }
 
     boolean registerAsEmployee(String title, String name, String email, String password,
@@ -73,13 +68,11 @@ public class Main {
         return users.add(employee);
     }
 
-    //Printing available skills from database
-    static ArrayList<Skill> skills()
-    {
-
+    static ArrayList<Skill> skills() {
+        DataBase dataBase = new DataBase();
         ArrayList availableSkills = dataBase.availableSkills();
         for (int i = 0; i < availableSkills.size(); i++) {
-            System.out.print(i + "-" + availableSkills.get(i) + "\t");
+            System.out.print(i + "-" + availableSkills.get(i) + "\t"); // printing all the available skills to the user
         }
         return null;
     }
