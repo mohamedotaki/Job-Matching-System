@@ -1,9 +1,9 @@
 version: 2.1
 
 workflows:
+  # Only 1 workflow needed. Runs jobs listed in this file
   maven_test:
     jobs:
-      # Seperating job step as multiple other jobs may depend on this
       - clean
       - unit_tests:
           requires:
@@ -11,49 +11,52 @@ workflows:
       - integration_test:
           requires:
             - unit_tests
-      - deploy:
-          requires:
-            - integration_test
-          
-jobs:
-  clean:
-    # You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    # Be sure to update the docker image tag below to openjdk version of your application.
-    # A list of available CircleCI docker Convenience Images are available here: https://circleci.com/developer/images/image/cimg/openjdk
+#      - merge:
+#          requires:
+#           - integration_test
+
+executors:
+  # Specifying executor to run jobs
+  doc:
     docker:
       - image: cimg/openjdk:11.0
+
+
+jobs:
+  # Job to clean project before testing
+  clean:
+    executor: doc
     steps:
-      # Checkout the code as the first step.
       - checkout
-      # Use mvn clean as the standard maven build phase
       - run:
           name: Clean
-          command: mvn -B -DskipTests clean
+          command: mvn clean
+  # Job to run unit tests
   unit_tests:
-      docker:
-        - image: cimg/openjdk:11.0
+      executor: doc
       steps:
         - checkout
         - run:
             name: Unit Tests
             command: mvn package
+  # Job to run the integration test
   integration_test:
-      docker:
-        - image: cimg/openjdk:11.0
+      executor: doc
       steps:
         - checkout
         - run:
             name: Integration Test
             command: mvn verify
+        # Storing some results as artifacts to be viewable in CircleCI
         - store_artifacts:
             path:  target/site/jacoco
         - store_artifacts:
             path:  target/surefire-reports
-  deploy:
-      docker:
-        - image: cimg/openjdk:11.0
-      steps:
-        - checkout
-        - run:
-            name: Test
-            command: git merge pr
+  # Job to merge with master
+#  merge:
+#      executor: doc
+#     steps:
+#        - checkout
+#        - run:
+#            name: Merge
+#            command: git checkout master ; git merge << pipeline.git.branch	 >>
