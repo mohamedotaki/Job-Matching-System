@@ -17,7 +17,7 @@ public class Employer extends User
     private ArrayList<Job> jobList;
 
     // Employer constructor with arguments
-    public Employer(String id, String title, String name, String email, String password, String phoneNum, String location)
+    public Employer(int id, String title, String name, String email, String password, String phoneNum, String location)
     {
         super(id, title, name, email, password, phoneNum, location);
         jobList = new ArrayList<>();

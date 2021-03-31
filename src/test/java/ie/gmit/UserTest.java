@@ -11,17 +11,17 @@ public class UserTest {
 	User user;
 
 	@BeforeEach
-	void init() {user = new User("071","Mr","Ricky Small","ricky@gmit.ie", "123456789", "0878080028", "Sligo");}
+	void init() {user = new User(1,"Mr","Ricky Small","ricky@gmit.ie", "123456789", "0878080028", "Sligo");}
 
 	@Test
 	void testUserIdPass()
 	{
-		assertEquals("071", user.getId());
+		assertEquals(1, user.getId());
 	}
 
 	@Test
 	void testUserIdFail() {
-		Exception e = assertThrows(IllegalArgumentException.class, () -> new User("", "Mr", "Ricky Small", "ricky@gmit.ie", "123456789", "0878080028","Sligo" ));
+		Exception e = assertThrows(IllegalArgumentException.class, () -> new User(0, "Mr", "Ricky Small", "ricky@gmit.ie", "123456789", "0878080028","Sligo" ));
 		assertEquals("Invalid ID", e.getMessage());
 	}
 
@@ -48,7 +48,7 @@ public class UserTest {
 
 	@Test
 	void testUserTitleFail() {
-		Exception e = assertThrows(IllegalArgumentException.class, () -> new User("071", "", "Ricky Small", "ricky@gmit.ie", "123456789", "0878080028","Sligo"));
+		Exception e = assertThrows(IllegalArgumentException.class, () -> new User(2, "", "Ricky Small", "ricky@gmit.ie", "123456789", "0878080028","Sligo"));
 		assertEquals("Invalid Title Error - Please choose Mr, Mrs or Miss", e.getMessage());
 	}
 
@@ -60,13 +60,13 @@ public class UserTest {
 
 	@Test
 	void testUserNameFailUnder5() {
-		Exception e = assertThrows(IllegalArgumentException.class, () -> new User("071", "Mr", "Rick", "ricky@gmit.ie", "123456789", "0878080028","Sligo"));
+		Exception e = assertThrows(IllegalArgumentException.class, () -> new User(2, "Mr", "Rick", "ricky@gmit.ie", "123456789", "0878080028","Sligo"));
 		assertEquals("Invalid Name Error - Name must have more than 5 letters and a maximum of 22", e.getMessage());
 	}
 
 	@Test
 	void testUserNameFailOver22() {
-		Exception e = assertThrows(IllegalArgumentException.class, () -> new User("071", "Mr", "RickyRossMohRickyRossMoh", "ricky@gmit.ie", "123456789", "0878080028","Sligo"));
+		Exception e = assertThrows(IllegalArgumentException.class, () -> new User(2, "Mr", "RickyRossMohRickyRossMoh", "ricky@gmit.ie", "123456789", "0878080028","Sligo"));
 		assertEquals("Invalid Name Error - Name must have more than 5 letters and a maximum of 22", e.getMessage());
 	}
 
@@ -78,7 +78,7 @@ public class UserTest {
 
 	@Test
 	void testUserEmailFail() {
-		Exception e = assertThrows(IllegalArgumentException.class, () -> new User("071", "Mr", "Ricky Small", "", "123456789", "0878080028","Sligo"));
+		Exception e = assertThrows(IllegalArgumentException.class, () -> new User(2, "Mr", "Ricky Small", "", "123456789", "0878080028","Sligo"));
 		assertEquals("Invalid Email Error", e.getMessage());
 	}
 
@@ -90,13 +90,13 @@ public class UserTest {
 
 	@Test
 	void testUserPasswordFailUnder8() {
-		Exception e = assertThrows(IllegalArgumentException.class, () -> new User("071", "Mr", "Ricky Small", "ricky@gmit.ie", "1234567", "0878080028","Sligo"));
+		Exception e = assertThrows(IllegalArgumentException.class, () -> new User(2, "Mr", "Ricky Small", "ricky@gmit.ie", "1234567", "0878080028","Sligo"));
 		assertEquals("Invalid Password Error - Must be at least 8 characters", e.getMessage());
 	}
 
 	@Test
 	void testUserPasswordFailName() {
-		Exception e = assertThrows(IllegalArgumentException.class, () -> new User("071", "Mr", "Ricky Small", "ricky@gmit.ie", "Ricky Small", "0878080028","Sligo"));
+		Exception e = assertThrows(IllegalArgumentException.class, () -> new User(2, "Mr", "Ricky Small", "ricky@gmit.ie", "Ricky Small", "0878080028","Sligo"));
 		assertEquals("Invalid Password Error - Must not match name", e.getMessage());
 	}
 
@@ -108,7 +108,7 @@ public class UserTest {
 
 	@Test
 	void testUserPhoneFail() {
-		Exception e = assertThrows(IllegalArgumentException.class, () -> new User("071", "Mr", "Ricky Small", "ricky@gmit.ie", "123456789", "087808002","Sligo"));
+		Exception e = assertThrows(IllegalArgumentException.class, () -> new User(2, "Mr", "Ricky Small", "ricky@gmit.ie", "123456789", "087808002","Sligo"));
 		assertEquals("Invalid Phone Number Error - Phone must be 10 digits", e.getMessage());
 	}
 
@@ -120,7 +120,7 @@ public class UserTest {
 
 	@Test
 	void testUserLocationFail() {
-		Exception e = assertThrows(IllegalArgumentException.class, () -> new User("071", "Mr", "Ricky Small", "ricky@gmit.ie", "123456789", "0878080028",""));
+		Exception e = assertThrows(IllegalArgumentException.class, () -> new User(2, "Mr", "Ricky Small", "ricky@gmit.ie", "123456789", "0878080028",""));
 		assertEquals("Invalid location", e.getMessage());
 	}
 }

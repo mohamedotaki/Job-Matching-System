@@ -13,18 +13,18 @@ public class Job
 {
     private String jobId;
     private String jobTitle;
-    private ArrayList<Skill> skillList;
     private String location;
     private String closingDate;
+    private ArrayList<Skill> skillList;
 
     // Job constructor with arguments
     public Job(String jobId, String jobTitle, String location, String closingDate)
     {
         setJobId(jobId);
         setJobTitle(jobTitle);
-        skillList = new ArrayList<>();
         setLocation(location);
         setClosingDate(closingDate);
+        skillList = new ArrayList<>();
     }
 
     // Method to add a skill to the skill list

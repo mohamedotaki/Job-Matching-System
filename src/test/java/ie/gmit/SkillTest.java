@@ -6,29 +6,38 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class SkillTest {
+public class SkillTest
+{
     Skill skill;
 
     @BeforeEach
-    void newSkill(){
+    void newSkill()
+    {
         skill = new Skill("Communication Skill",4);
     }
 
     @Test
-    void testSetSkillNameFalse(){
+    void testSetSkillNameFalse()
+    {
         assertThrows(IllegalArgumentException.class,()->skill.setSkillName("Error"));
     }
+
     @Test
-    void testSetSkillNameTrue(){
+    void testSetSkillNameTrue()
+    {
         assertEquals("Communication Skill",skill.getSkillName());
     }
+
     @Test
-    void testSetSkillLevelFalse(){
+    void testSetSkillLevelFalse()
+    {
         assertThrows(IllegalArgumentException.class,()->skill.setSkillLevel(15));
         assertThrows(IllegalArgumentException.class,()->skill.setSkillLevel(-5));
     }
+
     @Test
-    void testSetSkillLevelTrue(){
+    void testSetSkillLevelTrue()
+    {
         assertEquals(4,skill.getSkillLevel());
     }
 

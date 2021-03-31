@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class User {
 
-	private String id;
+	private int id;
 	private String title;
 	private String name;
 	private String email;
@@ -12,7 +12,7 @@ public class User {
 	private String phoneNum;
 	private String location;
 
-	public User(String id, String title, String name, String email, String password, String phoneNum, String location) {
+	public User(int id, String title, String name, String email, String password, String phoneNum, String location) {
 		setId(id);
 		setTitle(title);
 		setName(name);
@@ -22,12 +22,12 @@ public class User {
 		setLocation(location);
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
-		if(id.length() > 0) {
+	public void setId(int id) {
+		if(id > 0) {
 			this.id = id;
 		}
 		else {
