@@ -7,7 +7,7 @@ public class Employee extends User{
     private ArrayList<Skill> skills;
 
 
-    public Employee(String id, String title, String name, String email, String password, String phoneNum, String location, String degree, ArrayList<Skill> skills) {
+    public Employee(int id, String title, String name, String email, String password, String phoneNum, String location, String degree, ArrayList<Skill> skills) {
         super(id, title, name, email, password, phoneNum, location);
         setDegree(degree);
         setSkills(skills);

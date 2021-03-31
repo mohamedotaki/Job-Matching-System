@@ -17,7 +17,7 @@ public class EmployeeTest {
         skills = new ArrayList<>();
         skill = new Skill("Communication Skill",4);
         skills.add(skill);
-        employee = new Employee("1","Mr","mohamed","g00346067@gmit.ie","Password2",
+        employee = new Employee(1,"Mr","mohamed","g00346067@gmit.ie","Password2",
                 "0888888888","mayo","Software and Electronic Engineering",skills);
     }
 

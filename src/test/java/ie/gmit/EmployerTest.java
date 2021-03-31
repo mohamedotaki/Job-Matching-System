@@ -21,7 +21,7 @@ public class EmployerTest
     @BeforeEach
     void init()
     {
-        employer = new Employer("001",
+        employer = new Employer(1,
                                 "Mr",
                                 "Ross Monaghan",
                                 "employeremail@gmit.ie",
