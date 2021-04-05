@@ -69,7 +69,6 @@ jobs:
         - run:
             name: "Publish Release on GitHub"
             command: |
-              go get github.com/tcnksm/ghr
               VERSION=$(my-binary --version)
               ghr -t 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 -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./artifacts/
   # Job to merge with master
