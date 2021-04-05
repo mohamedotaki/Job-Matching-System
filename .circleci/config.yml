@@ -73,7 +73,7 @@ jobs:
         - run:
             name: "Publish Release on GitHub"
             command: |
-              ghr -t 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 -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./artifacts/target/practiceMaven2-1.0-SNAPSHOT.jar
+              ghr -t ${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} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./artifacts/target/practiceMaven2-1.0-SNAPSHOT.jar
   # Job to merge with master
 #  merge:
 #      executor: doc
