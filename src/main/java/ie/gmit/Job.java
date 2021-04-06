@@ -112,4 +112,8 @@ public class Job
     {
         return closingDate;
     }
+
+    public ArrayList<Skill> getSkillList() {
+        return skillList;
+    }
 }

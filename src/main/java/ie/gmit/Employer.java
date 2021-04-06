@@ -47,4 +47,10 @@ public class Employer extends User
         return false;
     }
 
+    /////
+
+
+    public ArrayList<Job> getJobList() {
+        return jobList;
+    }
 }
