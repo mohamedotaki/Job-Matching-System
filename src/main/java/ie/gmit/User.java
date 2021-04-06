@@ -1,8 +1,16 @@
+ /*******************************
+ * Description: Class to represent a job posting and its details
+ * Author(s): Ricky Small
+ * Version: 1.0
+ * Date Created: 18/03/21
+ *******************************/
+
 package ie.gmit;
 
 import java.util.Objects;
 
-public class User {
+public class User
+{
 
 	private int id;
 	private String title;
@@ -12,7 +20,9 @@ public class User {
 	private String phoneNum;
 	private String location;
 
-	public User(int id, String title, String name, String email, String password, String phoneNum, String location) {
+	// User constructor with arguments
+	public User(int id, String title, String name, String email, String password, String phoneNum, String location)
+	{
 		setId(id);
 		setTitle(title);
 		setName(name);
@@ -22,11 +32,15 @@ public class User {
 		setLocation(location);
 	}
 
-	public int getId() {
+
+	public int getId()
+	{
 		return id;
 	}
 
-	public void setId(int id) {
+	//Checking the ID is valid before using
+	public void setId(int id)
+	{
 		if(id > 0) {
 			this.id = id;
 		}
@@ -35,61 +49,65 @@ public class User {
 		}
 	}
 
-	public String getTitle() {
+	public String getTitle()
+	{
 		return title;
 	}
 
-	public void setTitle(String title) {
-		if(title.equals("Mr") || title.equals("Mrs") || title.equals("Miss") )
-		{
+	//Checking the Title is valid before using
+	public void setTitle(String title)
+	{
+		if(title.equals("Mr") || title.equals("Mrs") || title.equals("Miss") ) {
 			this.title = title;
 		}
-		else
-		{
+		else {
 			throw new IllegalArgumentException("Invalid Title Error - Please choose Mr, Mrs or Miss");
 		}
 	}
 
-	public String getName() {
+	public String getName()
+	{
 		return name;
 	}
 
-	public void setName(String name) {
-		if(name.length() >= 5 &&  name.length() <= 22)
-		{
+	//Checking the Name is valid before using
+	public void setName(String name)
+	{
+		if(name.length() >= 5 &&  name.length() <= 22) {
 			this.name = name;
 		}
-		else
-		{
+		else {
 			throw new IllegalArgumentException("Invalid Name Error - Name must have more than 5 letters and a maximum of 22");
 		}
 	}
 
-	public String getEmail() {
+	public String getEmail()
+	{
 		return email;
 	}
 
-	public void setEmail(String email) {
-		if(email.length() > 0)
-		{
+	//Checking the Email is valid before using
+	public void setEmail(String email)
+	{
+		if(email.length() > 0) {
 			this.email = email;
 		}
-		else
-		{
+		else {
 			throw new IllegalArgumentException("Invalid Email Error");
 		}
 	}
 
-	public String getPassword() {
+	public String getPassword()
+	{
 		return password;
 	}
 
-	public void setPassword(String password) {
-		if (password.length() > 8 && !password.equals(name))
-		{
+	//Checking the Password is valid before using
+	public void setPassword(String password)
+	{
+		if (password.length() > 8 && !password.equals(name)) {
 			this.password = password;
 		}
-
 		else {
 			String error = "";
 			if (password.length() < 8) {
@@ -102,31 +120,34 @@ public class User {
 		}
 	}
 
-	public String getPhoneNum() {
+	public String getPhoneNum()
+	{
 		return phoneNum;
 	}
 
-	public void setPhoneNum(String phoneNum) {
-		if(phoneNum.length() == 10 )
-		{
+	//Checking the Phone number is valid before using
+	public void setPhoneNum(String phoneNum)
+	{
+		if(phoneNum.length() == 10 ) {
 			this.phoneNum = phoneNum;
 		}
-		else
-		{
+		else {
 			throw new IllegalArgumentException("Invalid Phone Number Error - Phone must be 10 digits");
 		}
 	}
 
-	public String getLocation() {
+	public String getLocation()
+	{
 		return location;
 	}
 
-	public void setLocation(String location) {
+	//Checking the Location is valid before using
+	public void setLocation(String location)
+	{
 		if (location.length() > 2) {
 			this.location = location;
 		}
-		else
-		{
+		else {
 			throw new IllegalArgumentException("Invalid location");
 		}
 	}
