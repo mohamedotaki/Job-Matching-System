@@ -7,7 +7,7 @@ public class DataBase
     static public ArrayList<User> users = new ArrayList<>();
     static public ArrayList<Job> jobs = new ArrayList<>();
 
-    public ArrayList<Skill> availableSkills()
+    static public ArrayList<Skill> availableSkills()
     {
         ArrayList<Skill> availableSkills = new ArrayList<>();
         availableSkills.add(new Skill("Communication",5));
