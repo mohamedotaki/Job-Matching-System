@@ -16,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class EmployerTest
 {
+    DataBase database = new DataBase();
     ArrayList<Skill> skillsList;
     Employer employer;
     Job job;
@@ -46,9 +47,9 @@ public class EmployerTest
     void testAddJobSuccess()
     {
         Job jobAdd = new Job(1, "002", "Painter", "Sligo", "23/03/21", skillsList);
-        int jobListSize = DataBase.jobs.size();
+        int jobListSize = DataBase.getJobs().size();
         employer.addJob(jobAdd);
-        assertEquals(jobListSize+1, DataBase.jobs.size());
+        assertEquals(jobListSize+1, DataBase.getJobs().size());
     }
 
     // Testing that an invalid Job cannot be added to an employers job list
@@ -65,9 +66,9 @@ public class EmployerTest
     @Test
     void testRemoveJobSuccess()
     {
-        int jobListSize = DataBase.jobs.size();
+        int jobListSize = DataBase.getJobs().size();
         employer.removeJob("001");
-        assertEquals(jobListSize-1, DataBase.jobs.size());
+        assertEquals(jobListSize-1, DataBase.getJobs().size());
     }
 
     // Testing that an invalid Job cannot be removed from an employers job list

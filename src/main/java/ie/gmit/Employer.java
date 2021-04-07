@@ -7,8 +7,12 @@
 
 package ie.gmit;
 
+import java.util.ArrayList;
+
 public class Employer extends User
 {
+    DataBase database = new DataBase();
+
     // Employer constructor with arguments
     public Employer(int id, String title, String name, String email, String password, String phoneNum, String location)
     {
@@ -19,7 +23,7 @@ public class Employer extends User
     public void addJob(Job jobAdd)
     {
         if (jobAdd.getEmployerID()==getId()) {
-            DataBase.jobs.add(jobAdd);
+            database.addJob(jobAdd);
         }
         else {
             throw new IllegalArgumentException("Employer IDs do not match, no object added");
@@ -30,13 +34,14 @@ public class Employer extends User
     public void removeJob(String jobRemove)
     {
         Job toRemove = null;
-        for(Job job : DataBase.jobs) {
+        ArrayList<Job> jobsList = DataBase.getJobs();
+        for(Job job : jobsList) {
             if (job.getJobId().equals(jobRemove) && job.getEmployerID()==getId()) {
                 toRemove = job;
             }
         }
         if (toRemove!=null) {
-            DataBase.jobs.remove(toRemove);
+            database.removeJob(toRemove);
         }
         else {
             throw new IllegalArgumentException("Error removing job");
