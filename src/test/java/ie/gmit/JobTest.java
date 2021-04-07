@@ -10,20 +10,45 @@ package ie.gmit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class JobTest
 {
     Job job;
-    Skill skill;
+    ArrayList<Skill> skillsList;
 
     // Initializing a new valid Employer and adding 1 job to their job list
     @BeforeEach
     void init()
     {
-        job = new Job("001", "Baker", "Sligo", "23/03/21");
-        skill = new Skill("Java Programming", 10);
-        job.addSkill(skill);
+        skillsList = new ArrayList<>();
+        Skill skillCom = new Skill("Communication", 5);
+        skillsList.add(skillCom);
+
+        job = new Job(1, "001", "Baker", "Sligo", "23/03/21", skillsList);
+        job.addMatch(1);
+    }
+
+    // Tests for Employer ID success and failure
+    @Test
+    void testEmployerIdSuccess()
+    {
+        assertEquals(1, job.getEmployerID());
+    }
+
+    @Test
+    void testEmployerIdFailure()
+    {
+        Exception e = assertThrows(IllegalArgumentException.class, () -> new Job(0,
+                                                                                "001",
+                                                                                "Baker",
+                                                                                "Sligo",
+                                                                                "23/03/21",
+                                                                                skillsList));
+
+        assertEquals("Invalid Employer ID", e.getMessage());
     }
 
     // Tests for Job ID success and failure
@@ -36,10 +61,12 @@ public class JobTest
     @Test
     void testJobIdFail()
     {
-        Exception e = assertThrows(IllegalArgumentException.class, () -> new Job("",
+        Exception e = assertThrows(IllegalArgumentException.class, () -> new Job(1,
+                                                                                    "",
                                                                                 "Baker",
                                                                                 "Sligo",
-                                                                                "23/03/21"));
+                                                                                "23/03/21",
+                                                                                        skillsList));
         assertEquals("Invalid Job ID", e.getMessage());
     }
 
@@ -53,10 +80,12 @@ public class JobTest
     @Test
     void testJobTitleFail()
     {
-        Exception e = assertThrows(IllegalArgumentException.class, () -> new Job("001",
+        Exception e = assertThrows(IllegalArgumentException.class, () -> new Job(1,
+                                                                                "001",
                                                                                 "",
                                                                                 "Sligo",
-                                                                                "23/03/21"));
+                                                                                "23/03/21",
+                                                                                        skillsList));
         assertEquals("Invalid Job Title", e.getMessage());
     }
 
@@ -70,10 +99,12 @@ public class JobTest
     @Test
     void testJobLocationFail()
     {
-        Exception e = assertThrows(IllegalArgumentException.class, () -> new Job("001",
+        Exception e = assertThrows(IllegalArgumentException.class, () -> new Job(1,
+                                                                                "001",
                                                                                 "Baker",
                                                                                 "",
-                                                                                "23/03/21"));
+                                                                                "23/03/21",
+                                                                                  skillsList));
         assertEquals("Invalid Location", e.getMessage());
     }
 
@@ -87,42 +118,61 @@ public class JobTest
     @Test
     void testJobClosingDateFail()
     {
-        Exception e = assertThrows(IllegalArgumentException.class, () -> new Job("001",
+        Exception e = assertThrows(IllegalArgumentException.class, () -> new Job(1,
+                                                                                "001",
                                                                                 "Baker",
                                                                                 "Sligo",
-                                                                                ""));
-        assertEquals("Invalid Closing Date", e.getMessage());
+                                                                                "",
+                                                                                        skillsList));
+
+        assertEquals("Closing date must be in format dd/mm/yy", e.getMessage());
     }
 
-    // Testing that a valid Skill can be added to a Jobs list of required skills
+    // Tests for Job Set Skills success and failure
     @Test
-    void testAddSkillSuccess()
+    void testSetSkillsSuccess()
     {
-        Skill skillAdd = new Skill("Python Programming", 5);
-        assertTrue(job.addSkill(skillAdd));
+        ArrayList<Skill> skillsListGood = job.getSkillList();
+        assertEquals("Communication", skillsListGood.get(0).getSkillName());
     }
 
-    // Testing that an invalid Skill cannot be added to a Jobs list of required skills
     @Test
-    void testAddSkillFail()
+    void testSetSkillsFail()
     {
-        Skill skillAdd = new Skill("Java Programming", 5);
 
-        Exception e = assertThrows(IllegalArgumentException.class, () -> job.addSkill(skillAdd));
-        assertEquals("Duplicate Skill found, no object added", e.getMessage());
+        ArrayList<Skill> skillsListBad = new ArrayList<>();
+
+        Exception e = assertThrows(IllegalArgumentException.class, () -> new Job(1,
+                                                                                "001",
+                                                                                "Baker",
+                                                                                "Sligo",
+                                                                                "23/03/21",
+                                                                                skillsListBad));
+
+        assertEquals("Skill list must have at least one skill", e.getMessage());
     }
 
-    // Testing that a valid Skill can be removed from a Jobs skill list
+    // Tests for matchList add success and failure
     @Test
-    void testRemoveSkillSuccess()
+    void testAddMatchSuccess()
     {
-        assertTrue(job.removeSkill("Java Programming"));
+        int listSize = job.getMatchListSize();
+        job.addMatch(2);
+        assertEquals(listSize+1, job.getMatchListSize());
     }
 
-    // Testing that an invalid Skill cannot be removed from a Jobs skill list
     @Test
-    void testRemoveJobFail()
+    void testAddMatchFailure()
     {
-        assertFalse(job.removeSkill("C++ Programming"));
+        Exception e = assertThrows(IllegalArgumentException.class, () -> job.addMatch(1));
+        assertEquals("Employee ID already present, ID not added", e.getMessage());
+    }
+
+    // Tests for clearMatches success
+    @Test
+    void testClearMatchesSuccess()
+    {
+        job.clearMatches();
+        assertEquals(0, job.getMatchListSize());
     }
 }
