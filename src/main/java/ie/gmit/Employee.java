@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Employee extends User{
     private String degree;
-    private ArrayList<Skill> skills;
+    private ArrayList<Skill> skills = new ArrayList<>();
 
 
     public Employee(int id, String title, String name, String email, String password, String phoneNum, String location, String degree, ArrayList<Skill> skills) {
@@ -12,7 +12,10 @@ public class Employee extends User{
         setDegree(degree);
         setSkills(skills);
     }
-
+    public Employee(int id, String title, String name, String email, String password, String phoneNum, String location, String degree) {
+        super(id, title, name, email, password, phoneNum, location);
+        setDegree(degree);
+    }
 
     public String getDegree() {
         return degree;
@@ -25,6 +28,17 @@ public class Employee extends User{
             this.degree = degree;
         }
 
+    }
+    public boolean addSkill(Skill skill){
+        if(skill != null){
+            return skills.add(skill);
+        }else {
+            throw new IllegalArgumentException("Can't add empty skill");
+        }
+    }
+    public boolean removeSkill(int skillIndex){
+         skills.remove(skillIndex);
+         return true;
     }
 
     public ArrayList<Skill> getSkills() {
