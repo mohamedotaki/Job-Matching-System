@@ -21,6 +21,4 @@ public class DataBase
         availableSkills.add("Coding");
         return availableSkills;
     }
-
-
 }

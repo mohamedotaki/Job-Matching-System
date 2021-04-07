@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Job Matching System" />
         <module name="practiceMaven2" />
+        <module name="Job-Matching-System" />
       </profile>
     </annotationProcessing>
   </component>

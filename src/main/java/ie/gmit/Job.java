@@ -11,57 +11,56 @@ import java.util.ArrayList;
 
 public class Job
 {
+    private int employerID;
     private String jobId;
     private String jobTitle;
     private String location;
     private String closingDate;
-    private ArrayList<Skill> skillList = new ArrayList<>();;
+    private ArrayList<Skill> skillList = new ArrayList<>();
+    private ArrayList<Integer> matchList = new ArrayList<>();
+
 
     // Job constructor with arguments
-    public Job(String jobId, String jobTitle, String location, String closingDate, ArrayList<Skill> skills)
+    public Job(int employerID, String jobId, String jobTitle, String location, String closingDate, ArrayList<Skill> skills)
     {
+        setEmployerID(employerID);
         setJobId(jobId);
         setJobTitle(jobTitle);
         setLocation(location);
         setClosingDate(closingDate);
         setSkillList(skills);
-    }
-    public Job(String jobId, String jobTitle, String location, String closingDate)
-    {
-        setJobId(jobId);
-        setJobTitle(jobTitle);
-        setLocation(location);
-        setClosingDate(closingDate);
+
     }
 
-    public void setSkillList(ArrayList<Skill>skillList){
-        this.skillList = skillList;
-    }
-    // Method to add a skill to the skill list
-    public boolean addSkill(Skill skillAdd)
+    // Method to add a match to the match list
+    public void addMatch(Integer matchAdd)
     {
-        for(Skill skillExisting : skillList) {
-            if (skillExisting.getSkillName().equals(skillAdd.getSkillName())) {
-                throw new IllegalArgumentException("Duplicate Skill found, no object added");
-            }
+        if (!matchList.contains(matchAdd)) {
+            matchList.add(matchAdd);
         }
-        skillList.add(skillAdd);
-        return true;
+        else {
+            throw new IllegalArgumentException("Employee ID already present, ID not added");
+        }
     }
 
-    // Method to remove a job from the job list
-    public Boolean removeSkill(String skillName)
+    // Method to remove a match from the match list
+    public void clearMatches()
     {
-        for(Skill skillRemove : skillList) {
-            if (skillRemove.getSkillName().equals(skillName)) {
-                skillList.remove(skillRemove);
-                return true;
-            }
-        }
-        return false;
+        matchList.clear();
     }
 
     // Mutators
+    public void setEmployerID(int employerID)
+    {
+        if (employerID > 0) {
+            this.employerID = employerID;
+        }
+        else {
+            throw new IllegalArgumentException("Invalid Employer ID");
+        }
+
+    }
+
     public void setJobId(String jobId)
     {
         if(jobId.length() > 0) {
@@ -98,11 +97,26 @@ public class Job
             this.closingDate = closingDate;
         }
         else {
-            throw new IllegalArgumentException("Invalid Closing Date");
+            throw new IllegalArgumentException("Closing date must be in format dd/mm/yy");
+        }
+    }
+
+    public void setSkillList(ArrayList<Skill>skillList)
+    {
+        if(!skillList.isEmpty()) {
+            this.skillList = skillList;
+        }
+        else {
+            throw new IllegalArgumentException("Skill list must have at least one skill");
         }
     }
 
     // Accessors
+    public int getEmployerID()
+    {
+        return employerID;
+    }
+
     public String getJobId()
     {
         return jobId;
@@ -123,7 +137,13 @@ public class Job
         return closingDate;
     }
 
-    public ArrayList<Skill> getSkillList() {
+    public ArrayList<Skill> getSkillList()
+    {
         return skillList;
+    }
+
+    public int getMatchListSize()
+    {
+        return matchList.size();
     }
 }

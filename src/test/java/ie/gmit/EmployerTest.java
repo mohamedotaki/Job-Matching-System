@@ -10,10 +10,13 @@ package ie.gmit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class EmployerTest
 {
+    ArrayList<Skill> skillsList;
     Employer employer;
     Job job;
 
@@ -29,7 +32,12 @@ public class EmployerTest
                                 "0871234567",
                                 "Sligo");
 
-        job = new Job("001", "Baker", "Sligo", "23/03/21");
+
+        skillsList = new ArrayList<>();
+        Skill skillCom = new Skill("Communication", 5);
+        skillsList.add(skillCom);
+
+        job = new Job(1, "001", "Baker", "Sligo", "23/03/21", skillsList);
         employer.addJob(job);
     }
 
@@ -37,31 +45,47 @@ public class EmployerTest
     @Test
     void testAddJobSuccess()
     {
-        Job jobAdd = new Job("002", "Painter", "Sligo", "23/03/21");
-        assertTrue(employer.addJob(jobAdd));
+        Job jobAdd = new Job(1, "002", "Painter", "Sligo", "23/03/21", skillsList);
+        int jobListSize = DataBase.jobs.size();
+        employer.addJob(jobAdd);
+        assertEquals(jobListSize+1, DataBase.jobs.size());
     }
 
     // Testing that an invalid Job cannot be added to an employers job list
     @Test
     void testAddJobFail()
     {
-        Job jobAdd = new Job("001", "Painter", "Sligo", "23/03/21");
+        Job jobAdd = new Job(3, "001", "Painter", "Sligo", "23/03/21", skillsList);
 
         Exception e = assertThrows(IllegalArgumentException.class, () -> employer.addJob(jobAdd));
-        assertEquals("Duplicate Job id found, no object added", e.getMessage());
+        assertEquals("Employer IDs do not match, no object added", e.getMessage());
     }
 
     // Testing that a valid Job can be removed from an employers job list
     @Test
     void testRemoveJobSuccess()
     {
-        assertTrue(employer.removeJob("001"));
+        int jobListSize = DataBase.jobs.size();
+        employer.removeJob("001");
+        assertEquals(jobListSize-1, DataBase.jobs.size());
     }
 
     // Testing that an invalid Job cannot be removed from an employers job list
     @Test
-    void testRemoveJobFail()
+    void testRemoveJobFail1()
     {
-        assertFalse(employer.removeJob("002"));
+        Exception e1 = assertThrows(IllegalArgumentException.class, () -> employer.removeJob("003"));
+        assertEquals("Error removing job", e1.getMessage());
+
+        Employer employer2 = new Employer(2,
+                "Mr",
+                "John Monaghan",
+                "monaghan@gmit.ie",
+                "Password12345",
+                "0870303037",
+                "Sligo");
+
+        Exception e2 = assertThrows(IllegalArgumentException.class, () -> employer2.removeJob("001"));
+        assertEquals("Error removing job", e2.getMessage());
     }
 }
