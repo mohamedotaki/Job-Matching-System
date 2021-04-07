@@ -8,16 +8,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AppIT {
-    Methods methods= new Methods();
+    DataBase dataBase = new DataBase();
     ArrayList<Skill> skills =new ArrayList<>();
     @Test
     void AppIT(){
         // new employer create account test
         Employer employer = new Employer(1,"Mr","Johnnn","john@hotmail.com",
                 "password12","1234567890","Galway");
-        assertTrue(methods.createAccount(employer));
+        assertTrue(dataBase.createAccount(employer));
         //Employer login Test
-        Employer currentEmployer = (Employer) methods.login("john@hotmail.com","password12");
+        Employer currentEmployer = (Employer) dataBase.login("john@hotmail.com","password12");
         assertEquals(employer,currentEmployer);
         //add job - test
         currentEmployer.addJob(new Job(1, "1","Software Engineering","Galway","01/06/2021",skills));
@@ -34,10 +34,10 @@ public class AppIT {
         // new employee create account test
         Employee employee = new Employee(2,"Mr","Matttt","matt@hotmail.com",
                 "password12","1234567890","Mayo","Software");
-        assertTrue(methods.createAccount(employee));
+        assertTrue(dataBase.createAccount(employee));
 
         //Employee login test
-        Employee currentEmployee = (Employee) methods.login("matt@hotmail.com","password12");
+        Employee currentEmployee = (Employee) dataBase.login("matt@hotmail.com","password12");
         assertEquals(employee, currentEmployee);
         //add skills
         currentEmployee.addSkill(new Skill(DataBase.getAvailableSkills().get(0),5));

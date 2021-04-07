@@ -85,7 +85,7 @@ public class JobTest
                                                                                 "",
                                                                                 "Sligo",
                                                                                 "23/03/21",
-                                                                                        skillsList));
+                                                                                skillsList));
         assertEquals("Invalid Job Title", e.getMessage());
     }
 
