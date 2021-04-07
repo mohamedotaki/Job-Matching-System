@@ -1,9 +1,9 @@
- /*******************************
+ /******************************
  * Description: Class to represent a job posting and its details
  * Author(s): Ricky Small
  * Version: 1.0
  * Date Created: 18/03/21
- *******************************/
+ ******************************/
 
 package ie.gmit;
 
