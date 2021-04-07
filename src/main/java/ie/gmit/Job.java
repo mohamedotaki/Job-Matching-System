@@ -17,7 +17,7 @@ public class Job
     private String location;
     private String closingDate;
     private ArrayList<Skill> skillList = new ArrayList<>();
-    private ArrayList<Integer> matchList = new ArrayList<>();
+    private ArrayList<int[]> matchList = new ArrayList<>();
 
 
     // Job constructor with arguments
@@ -33,14 +33,15 @@ public class Job
     }
 
     // Method to add a match to the match list
-    public void addMatch(Integer matchAdd)
+    public void addMatch(int matchId, int percentage)
     {
-        if (!matchList.contains(matchAdd)) {
-            matchList.add(matchAdd);
+        int[] matchDetails = { matchId, percentage };
+        for ( int[] match : matchList) {
+            if (match[0]==matchId) {
+                throw new IllegalArgumentException("Employee ID already present, ID not added");
+            }
         }
-        else {
-            throw new IllegalArgumentException("Employee ID already present, ID not added");
-        }
+        matchList.add(matchDetails);
     }
 
     // Method to remove a match from the match list

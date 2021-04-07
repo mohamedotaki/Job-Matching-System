@@ -81,10 +81,9 @@ public class DataBase
                     }
 
                     if (matchCount>skillsRequired.size()/2) {
-                        jobs.get(jobCnt).addMatch(employee.getId());
+                        jobs.get(jobCnt).addMatch(employee.getId(), matchCount/skillsRequired.size()*100);
                     }
                 }
-
             }
             jobCnt++;
         }
