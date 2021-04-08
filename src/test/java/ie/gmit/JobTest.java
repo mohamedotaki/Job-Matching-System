@@ -156,9 +156,9 @@ public class JobTest
     @Test
     void testAddMatchSuccess()
     {
-        int listSize = job.getMatchListSize();
+        int listSize = job.getMatchList().size();
         job.addMatch(2, 60);
-        assertEquals(listSize+1, job.getMatchListSize());
+        assertEquals(listSize+1, job.getMatchList().size());
     }
 
     @Test
@@ -173,6 +173,6 @@ public class JobTest
     void testClearMatchesSuccess()
     {
         job.clearMatches();
-        assertEquals(0, job.getMatchListSize());
+        assertEquals(0, job.getMatchList().size());
     }
 }

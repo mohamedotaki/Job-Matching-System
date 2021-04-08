@@ -143,12 +143,7 @@ public class Job
         return skillList;
     }
 
-    public int getMatchListSize()
-    {
-        return matchList.size();
-    }
-
-    public ArrayList<Integer> getMatchList()
+    public ArrayList<int[]> getMatchList()
     {
         return matchList;
     }
