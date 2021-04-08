@@ -1,6 +1,6 @@
 /*******************************
  * Description: Test class to test all the Database operation
- * Author(s): Mohamed Otaki
+ * Author(s): Mohamed Otaki, Ricky Small
  * Version: 1.0
  * Date Created: 07/04/21
  *******************************/
@@ -8,11 +8,32 @@
 package ie.gmit;
 
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DatabaseTest
 {
     static User user;
+
+    @Test
+    void testAvailableSkillsDatabase()
+    {
+        ArrayList<String> availableSkillsdb = new ArrayList<>();
+        availableSkillsdb.add("Communication");
+        availableSkillsdb.add("Computer");
+        availableSkillsdb.add("People");
+        availableSkillsdb.add("Leadership");
+        availableSkillsdb.add("Organizational");
+        availableSkillsdb.add("Time management");
+        availableSkillsdb.add("Collaboration");
+        availableSkillsdb.add("Problem-solving");
+        availableSkillsdb.add("Coding");
+
+        boolean isEqual = DataBase.getAvailableSkills().equals(availableSkillsdb);
+        assertTrue(isEqual);
+    }
 
     @Test
     void testAddUserTrue()
@@ -77,8 +98,9 @@ public class DatabaseTest
         assertThrows(IllegalArgumentException.class,()->DataBase.deleteUser(emptyUser));
     }
 
+
     @Test
-    void getAvailableSkills()
+    void testupdateMatchesPass()
     {
 
     }

@@ -1,6 +1,6 @@
 /*******************************
  * Description: Test class to test job methods
- * Author(s): Mohamed Otaki, Ross Monaghan
+ * Author(s): Mohamed Otaki, Ross Monaghan, Ricky Small
  * Version: 1.0
  * Date Created: 23/03/21
  *******************************/
