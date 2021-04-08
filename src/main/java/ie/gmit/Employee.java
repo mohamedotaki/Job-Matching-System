@@ -34,8 +34,8 @@ public class Employee extends User
         else {
             this.degree = degree;
         }
-
     }
+
     public boolean addSkill(Skill skill)
     {
         if(skill != null) {
@@ -45,6 +45,7 @@ public class Employee extends User
             throw new IllegalArgumentException("Can't add empty skill");
         }
     }
+
     public boolean removeSkill(int skillIndex)
     {
         if(skills.size() >= skillIndex && skillIndex >= 0) {
@@ -54,8 +55,6 @@ public class Employee extends User
         else {
             throw new IllegalArgumentException("Skill index is out of range");
         }
-
-
     }
 
     public ArrayList<Skill> getSkills()

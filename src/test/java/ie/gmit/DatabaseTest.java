@@ -1,5 +1,11 @@
-package ie.gmit;
+/*******************************
+ * Description: Test class to test all the Database operation
+ * Author(s): Mohamed Otaki
+ * Version: 1.0
+ * Date Created: 07/04/21
+ *******************************/
 
+package ie.gmit;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,7 +26,6 @@ public class DatabaseTest
     @Test
     void testAddUserFalse()
     {
-
         User emptyUser = null;
         assertThrows(IllegalArgumentException.class,()-> DataBase.addUser(emptyUser));
         User duplicatedUser = new User(2, "Mr", "duplicatedUser",

@@ -2,7 +2,7 @@
  * Description: Test class to test all the methods working together
  * Author(s): Mohamed Otaki
  * Version: 1.0
- * Date Created: 23/03/21
+ * Date Created: 05/04/21
  *******************************/
 
 package ie.gmit;
@@ -30,7 +30,7 @@ public class AppIT
         Employer currentEmployer = (Employer) dataBase.login("john@hotmail.com","password12");
         assertEquals(employer,currentEmployer);
 
-        //add job - test
+        //add job test
         ArrayList<Skill> job1Skills =new ArrayList<>();
         job1Skills.add(new Skill(DataBase.getAvailableSkills().get(0),5));
         job1Skills.add(new Skill(DataBase.getAvailableSkills().get(7),5));

@@ -82,6 +82,7 @@ public class DataBase
             throw new IllegalArgumentException("Can't add empty user");
         }
     }
+
     public static boolean updateUser(User user)
     {
         for(int index = 0; index < users.size(); index++) {
