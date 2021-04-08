@@ -28,7 +28,7 @@ public class JobTest
         skillsList.add(skillCom);
 
         job = new Job(1, "001", "Baker", "Sligo", "23/03/21", skillsList);
-        job.addMatch(1);
+        job.addMatch(1, 60);
     }
 
     // Tests for Employer ID success and failure
@@ -157,14 +157,14 @@ public class JobTest
     void testAddMatchSuccess()
     {
         int listSize = job.getMatchListSize();
-        job.addMatch(2);
+        job.addMatch(2, 60);
         assertEquals(listSize+1, job.getMatchListSize());
     }
 
     @Test
     void testAddMatchFailure()
     {
-        Exception e = assertThrows(IllegalArgumentException.class, () -> job.addMatch(1));
+        Exception e = assertThrows(IllegalArgumentException.class, () -> job.addMatch(1, 60));
         assertEquals("Employee ID already present, ID not added", e.getMessage());
     }
 
