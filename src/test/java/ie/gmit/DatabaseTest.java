@@ -23,10 +23,11 @@ public class DatabaseTest
 
         User emptyUser = null;
         assertThrows(IllegalArgumentException.class,()-> DataBase.addUser(emptyUser));
-//        User duplicatedUser = new User(1, "Mr", "Mohamed",
-//                "g00346067@gmit.ie", "password12",
-//                "0089212121","Mayo");
-//        assertThrows(IllegalArgumentException.class,()-> DataBase.addUser(duplicatedUser));
+        User duplicatedUser = new User(2, "Mr", "duplicatedUser",
+                "g00346067@gmit.ie", "password12",
+                "0089212121","Mayo");
+        DataBase.addUser(duplicatedUser);
+        assertThrows(IllegalArgumentException.class,()-> DataBase.addUser(duplicatedUser));
     }
 
     @Test
@@ -39,6 +40,7 @@ public class DatabaseTest
     void testLoginFalse()
     {
         assertThrows(IllegalArgumentException.class,()-> DataBase.login("g00346067@gmit.ie", "wrongPassword"));
+        assertThrows(IllegalArgumentException.class,()-> DataBase.login("wrongEmail@gmit.ie", "password12"));
     }
 
     @Test
