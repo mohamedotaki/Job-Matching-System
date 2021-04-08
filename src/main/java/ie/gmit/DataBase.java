@@ -1,6 +1,6 @@
 /*******************************
  * Description: Test class to test job methods
- * Author(s): Mohamed Otaki,
+ * Author(s): Mohamed Otaki, Ross Monaghan
  * Version: 1.0
  * Date Created: 23/03/21
  *******************************/
@@ -58,6 +58,7 @@ public class DataBase
         throw new IllegalArgumentException("Wrong email or password");
     }
 
+    // Method to delete a user from the user database
     public static boolean deleteUser(User user)
     {
         if(user != null) {
@@ -68,6 +69,7 @@ public class DataBase
         }
     }
 
+    // Method to add a user to the database
     public static boolean addUser(User user)
     {
         if(user != null) {
@@ -83,6 +85,7 @@ public class DataBase
         }
     }
 
+    // Method to update a users details in the database
     public static boolean updateUser(User user)
     {
         for(int index = 0; index < users.size(); index++) {
