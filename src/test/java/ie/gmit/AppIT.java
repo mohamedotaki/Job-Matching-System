@@ -1,3 +1,10 @@
+/*******************************
+ * Description: Test class to test all the methods working together
+ * Author(s): Mohamed Otaki
+ * Version: 1.0
+ * Date Created: 23/03/21
+ *******************************/
+
 package ie.gmit;
 
 import org.junit.jupiter.api.Test;
@@ -7,34 +14,40 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class AppIT {
+
+public class AppIT
+{
     DataBase dataBase = new DataBase();
     ArrayList<Skill> skills =new ArrayList<>();
+
     @Test
-    void AppIT(){
+    void AppIT()
+    {
         // new employer create account test
         Employer employer = new Employer(1,"Mr","Johnnn","john@hotmail.com",
                 "password12","1234567890","Galway");
-        assertTrue(dataBase.createAccount(employer));
+        assertTrue(dataBase.addUser(employer));
         //Employer login Test
         Employer currentEmployer = (Employer) dataBase.login("john@hotmail.com","password12");
         assertEquals(employer,currentEmployer);
         //add job - test
+        skills.add(new Skill(DataBase.getAvailableSkills().get(0),5));
+        skills.add(new Skill(DataBase.getAvailableSkills().get(1),5));
         currentEmployer.addJob(new Job(1, "1","Software Engineering","Galway","01/06/2021",skills));
         skills.clear();
         skills.add(new Skill(DataBase.getAvailableSkills().get(0),5));
         skills.add(new Skill(DataBase.getAvailableSkills().get(1),5));
         skills.add(new Skill(DataBase.getAvailableSkills().get(5),5));
         currentEmployer.addJob(new Job(1, "2","Test Engineering","Mayo","01/07/2021",skills));
-        //assertEquals(2,currentEmployer.getJobList().size());
+        assertEquals(2,DataBase.getJobs().size());
         //Remove job test
         currentEmployer.removeJob("2");
-        //assertEquals(1,currentEmployer.getJobList().size());
+        assertEquals(1,DataBase.getJobs().size());
 
         // new employee create account test
         Employee employee = new Employee(2,"Mr","Matttt","matt@hotmail.com",
                 "password12","1234567890","Mayo","Software");
-        assertTrue(dataBase.createAccount(employee));
+        assertTrue(dataBase.addUser(employee));
 
         //Employee login test
         Employee currentEmployee = (Employee) dataBase.login("matt@hotmail.com","password12");
@@ -49,10 +62,6 @@ public class AppIT {
         assertEquals(2, currentEmployee.getSkills().size());
 
         //Match job test
-
-
-
-
 
 
     }

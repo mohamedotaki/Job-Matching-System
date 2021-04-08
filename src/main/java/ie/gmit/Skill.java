@@ -1,32 +1,46 @@
+/*******************************
+ * Description: class to create a skill object that can be attached to employee or a job
+ * Author(s): Mohamed Otaki
+ * Version: 1.0
+ * Date Created: 23/03/21
+ *******************************/
+
 package ie.gmit;
 
-public class Skill {
+public class Skill
+{
     private String skillName;
     private int skillLevel;
 
-    public Skill(String skillName, int skillLevel) {
+    public Skill(String skillName, int skillLevel)
+    {
         setSkillName(skillName);
         setSkillLevel(skillLevel);
     }
 
-    public String getSkillName() {
+    public String getSkillName()
+    {
         return skillName;
     }
 
-    public void setSkillName(String skillName) {
-        if(skillName.length()<=5){
+    public void setSkillName(String skillName)
+    {
+        if(skillName.length() <= 5) {
             throw new IllegalArgumentException("Skill name should be more than 5");
-        }else {
+        }
+        else {
             this.skillName = skillName;
         }
     }
 
-    public int getSkillLevel() {
+    public int getSkillLevel()
+    {
         return skillLevel;
     }
 
-    public void setSkillLevel(int skillLevel) {
-        if(skillLevel>10 || skillLevel<1){
+    public void setSkillLevel(int skillLevel)
+    {
+        if(skillLevel > 10 || skillLevel < 1) {
             throw new IllegalArgumentException("Skill level should be between 1 and 10");
         }
         this.skillLevel = skillLevel;
