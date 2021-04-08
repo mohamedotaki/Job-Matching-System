@@ -1,11 +1,18 @@
+/*******************************
+ * Description: Test class to test job methods
+ * Author(s): Mohamed Otaki,
+ * Version: 1.0
+ * Date Created: 23/03/21
+ *******************************/
+
 package ie.gmit;
 
 import java.util.ArrayList;
 
 public class DataBase
 {
-    static private ArrayList<User> users = new ArrayList<>();
-    static private ArrayList<Job> jobs = new ArrayList<>();
+    private static ArrayList<User> users = new ArrayList<>();
+    private static ArrayList<Job> jobs = new ArrayList<>();
 
     static public ArrayList<String> getAvailableSkills()
     {
@@ -39,22 +46,52 @@ public class DataBase
         return jobs;
     }
 
-    // Method to add a user to the database
-    public boolean createAccount(User user)
-    {
-        return users.add(user);
-    }
-
     // Method to login a user
-    public User login(String email, String pass)
+    public static User login(String email, String pass)
     {
-        for(int i = 0; i< users.size(); i++) {
-            if(users.get(i).getEmail().equalsIgnoreCase(email)
-                    && users.get(i).getPassword().equals(pass)){
-                return users.get(i);
+        for (User user : users) {
+            if (user.getEmail().equalsIgnoreCase(email)
+                    && user.getPassword().equals(pass)) {
+                return user;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Wrong email or password");
+    }
+
+    public static boolean deleteUser(User user)
+    {
+        if(user != null) {
+            return users.remove(user);
+        }
+        else {
+            throw new IllegalArgumentException("User was not found in database");
+        }
+    }
+
+    public static boolean addUser(User user)
+    {
+        if(user != null) {
+            for (User value : users) {
+                if (user.getId() == value.getId()) {
+                    throw new IllegalArgumentException("User ID already in database");
+                }
+            }
+            return users.add(user);
+        }
+        else {
+            throw new IllegalArgumentException("Can't add empty user");
+        }
+    }
+    public static boolean updateUser(User user)
+    {
+        for(User value : users) {
+            if (user.getId() == value.getId()) {
+               if(users.remove(value)) {
+                   return users.add(user);
+               }
+            }
+        }
+        throw new IllegalArgumentException("User ID was not found in database");
     }
 
     // Method to update all jobs lists of matches
