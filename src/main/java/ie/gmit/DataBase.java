@@ -84,18 +84,17 @@ public class DataBase
     }
     public static boolean updateUser(User user)
     {
-        for(User value : users) {
-            if (user.getId() == value.getId()) {
-               if(users.remove(value)) {
-                   return users.add(user);
-               }
+        for(int index = 0; index < users.size(); index++) {
+            if (user.getId() == users.get(index).getId()) {
+                users.set(index,user);
+                return true;
             }
         }
         throw new IllegalArgumentException("User ID was not found in database");
     }
 
     // Method to update all jobs lists of matches
-    public void updateMatches()
+    public static void updateMatches()
     {
         int jobCnt = 0;
         for(Job job : jobs) {

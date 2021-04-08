@@ -146,4 +146,10 @@ public class Job
     {
         return matchList.size();
     }
+
+    public ArrayList<Integer> getMatchList()
+    {
+        return matchList;
+    }
+
 }
