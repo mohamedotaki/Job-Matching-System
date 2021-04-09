@@ -45,7 +45,7 @@ jobs:
             command: tar -cvzf BUILD_NUM.tar target/
         - store_artifacts:
             path: BUILD_NUM.tar
-            destination: BUILD_NUM
+            destination: target/BUILD_NUM
         - run: mvn dependency:go-offline
         - run:
             name: maven build
