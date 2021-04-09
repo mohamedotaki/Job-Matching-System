@@ -46,6 +46,11 @@ jobs:
             command: |
               mvn clean install
         - run:
+            name: Compress Artifacts
+            command: tar -cvzf $CIRCLE_BUILD_NUM.tar target/
+        - store_artifacts:
+            path: target
+        - run:
             name: Install jFrog CLI
             command: curl -fL https://getcli.jfrog.io | sh
         - run:
@@ -55,9 +60,4 @@ jobs:
               ./jfrog rt u "target/" "rmrmaven-libs-release-local" --build-name="test_build3" --build-number=$CIRCLE_BUILD_NUM --flat=false
               ./jfrog rt bce "test_build3" $CIRCLE_BUILD_NUM
               ./jfrog rt bp "test_build3" $CIRCLE_BUILD_NUM
-        - run:
-            name: Compress Artifacts
-            command: tar -cvzf $CIRCLE_BUILD_NUM.tar target/
-        - store_artifacts:
-            path: target/$CIRCLE_BUILD_NUM.tar
 
