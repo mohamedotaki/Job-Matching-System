@@ -44,8 +44,7 @@ jobs:
             name: Compress Artifacts
             command: tar -cvzf BUILD_NUM.tar target/
         - store_artifacts:
-            path: BUILD_NUM.tar
-            destination: BUILD_NUM
+            path: target/BUILD_NUM.tar
         - run: mvn dependency:go-offline
         - run:
             name: maven build
