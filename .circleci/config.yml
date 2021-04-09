@@ -78,7 +78,7 @@ jobs:
       - run:
           name: Push To Artifactory
           command: |
-            ./jfrog config add --artifactory-url $ARTIFACTORY_URL --user $ARTIFACTORY_USERNAME --apikey $ARTIFACTORY_APIKEY --interactive=false
+            ./jfrog rt config --url $ARTIFACTORY_URL --user $ARTIFACTORY_USERNAME --apikey $ARTIFACTORY_APIKEY --interactive=false
             ./jfrog rt u "multi*/*.jar" "rmrmaven-maven-jcenter" --build-name="test_build" --build-number=$CIRCLE_BUILD_NUM --flat=false
             ./jfrog rt bce "test_build" $CIRCLE_BUILD_NUM
             ./jfrog rt bp "test_build" $CIRCLE_BUILD_NUM
