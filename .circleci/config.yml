@@ -62,10 +62,10 @@ jobs:
             name: Push To Artifactory
             command: |
               ./jfrog rt config --url $ARTIFACTORY_URL --user $ARTIFACTORY_USERNAME --apikey $ARTIFACTORY_APIKEY --interactive=false
-              ./jfrog rt u "target/*.jar" "rmrmaven-libs-release-local/$CIRCLE_BUILD_NUM/" --build-name="test_build3" --build-number=$CIRCLE_BUILD_NUM --flat=false
-              ./jfrog rt u "target/site/jacoco/ie.gmit/" rmrmaven-libs-release-local/$CIRCLE_BUILD_NUM/
-              ./jfrog rt u "target/surefire-reports/" rmrmaven-libs-release-local/$CIRCLE_BUILD_NUM/
-              ./jfrog rt u "target/" rmrmaven-libs-release-local/$CIRCLE_BUILD_NUM/$CIRCLE_BUILD_NUM.zip --archive zip
+              ./jfrog rt u "target/*.jar" rmrmaven-libs-release-local/$CIRCLE_BUILD_NUM/ --build-name="test_build3" --build-number=$CIRCLE_BUILD_NUM --flat=false
+              ./jfrog rt u "target/site/jacoco/ie.gmit/" rmrmaven-libs-release-local/$CIRCLE_BUILD_NUM/site/jacoco/ie.gmit/
+              ./jfrog rt u "target/surefire-reports/" rmrmaven-libs-release-local/$CIRCLE_BUILD_NUM/surefire-reports/
+              ./jfrog rt u "target/" rmrmaven-libs-release-local/$CIRCLE_BUILD_NUM/$CIRCLE_BUILD_NUM-BUILD.zip --archive zip
               ./jfrog rt bce "test_build3" $CIRCLE_BUILD_NUM
               ./jfrog rt bp "test_build3" $CIRCLE_BUILD_NUM
 
