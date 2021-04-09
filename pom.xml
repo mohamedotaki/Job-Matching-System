@@ -7,6 +7,15 @@
     <groupId>ie.gmit</groupId>
     <artifactId>Job-Matching-System</artifactId>
     <version>1.0</version>
+
+    <repositories>
+        <repository>
+            <id>JFrogJars</id>
+            <name>JFrogJars</name>
+            <url>https://dl.bintray.com/jfrog/jfrog-jars/</url>
+        </repository>
+    </repositories>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -26,7 +35,14 @@
             <version>5.4.2</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jfrog.buildinfo/artifactory-maven-plugin -->
+<!--        <dependency>-->
+<!--            <groupId>org.jfrog.buildinfo</groupId>-->
+<!--            <artifactId>artifactory-maven-plugin</artifactId>-->
+<!--            <version>3.2.0</version>-->
+<!--        </dependency>-->
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -90,6 +106,33 @@
                                 <include>**/*IT.*</include>
                                 <include>**/*Tests.*</include>
                             </includes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.jfrog.buildinfo</groupId>
+                <artifactId>artifactory-maven-plugin</artifactId>
+                <version>2.2.1</version>
+                <inherited>false</inherited>
+                <executions>
+                    <execution>
+                        <id>build-info</id>
+                        <goals>
+                            <goal>publish</goal>
+                        </goals>
+                        <configuration>
+                            <deployProperties>
+                                <gradle>awesome</gradle>
+                                <review.team>qa</review.team>
+                            </deployProperties>
+                            <publisher>
+                                <contextUrl>https://rmrartifact.jfrog.io</contextUrl>
+                                <username>g00352166@gmit.ie</username>
+                                <password>Password1!</password>
+                                <repoKey>rmrmaven-libs-release-local</repoKey>
+                                <snapshotRepoKey>rmrmaven-libs-snapshot-local</snapshotRepoKey>
+                            </publisher>
                         </configuration>
                     </execution>
                 </executions>

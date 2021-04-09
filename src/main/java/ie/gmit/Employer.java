@@ -46,6 +46,5 @@ public class Employer extends User
         else {
             throw new IllegalArgumentException("Error removing job");
         }
-
     }
 }

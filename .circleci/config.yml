@@ -1,9 +1,5 @@
 version: 2.1
 
-variables:
-  - name: VERSION
-    value: 0.1
-
 workflows:
   # Only 1 workflow needed. Runs jobs listed in this file
   maven_test:
@@ -15,7 +11,7 @@ workflows:
       - integration_test:
           requires:
             - unit_tests
-      - deploy:
+      - store:
           requires:
            - integration_test
 
@@ -24,7 +20,6 @@ executors:
   doc:
     docker:
       - image: cimg/openjdk:11.0
-
 
 jobs:
   # Job to clean project before testing
@@ -51,19 +46,14 @@ jobs:
         - run:
             name: Integration Test
             command: mvn verify
-        # Storing some results as artifacts to be viewable in CircleCI
-        - store_artifacts:
-            path:  target/site/jacoco
-        - store_artifacts:
-            path:  target/surefire-reports
-  # Job to deploy artifacts
-  deploy:
+  # Job to store artifacts in CircleCI
+  store:
      executor: doc
      steps:
         - checkout
         # Storing some results as artifacts to be viewable in CircleCI
         - store_artifacts:
-            path:  target/practiceMaven2-1.0-SNAPSHOT.jar
+            path:  target/Job-Matching-System-1.0.jar
         - store_artifacts:
             path:  target/site/jacoco
         - store_artifacts:

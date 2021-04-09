@@ -14,6 +14,7 @@ public class DataBase
     private static ArrayList<User> users = new ArrayList<>();
     private static ArrayList<Job> jobs = new ArrayList<>();
 
+    // Method to return a list of skills
     static public ArrayList<String> getAvailableSkills()
     {
         ArrayList<String> availableSkills = new ArrayList<>();

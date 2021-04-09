@@ -19,7 +19,6 @@ public class AppIT
 {
     DataBase dataBase = new DataBase();
 
-    @Disabled
     @Test
     void AppIT()
     {
