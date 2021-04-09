@@ -42,9 +42,10 @@ jobs:
             path:  target/surefire-reports
         - run:
             name: Compress Artifacts to TAR
-            command: tar -cvzf BUILD_NUM.tar ~/repo/target/
+            command: tar -cvzf BUILD_NUM.tar target/
         - store_artifacts:
             path: ~/repo/target/BUILD_NUM.tar
+            destination: BUILD_NUM
         - run: mvn dependency:go-offline
         - run:
             name: maven build
