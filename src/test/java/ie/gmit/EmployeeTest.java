@@ -4,7 +4,6 @@
  * Version: 1.0
  * Date Created: 23/03/21
  *******************************/
-
 package ie.gmit;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -33,7 +32,8 @@ public class EmployeeTest
     @Test
     void testSetDegreeFalse()
     {
-        assertThrows(IllegalArgumentException.class,()->employee.setDegree("Error"));
+        Exception e = assertThrows(IllegalArgumentException.class,()->employee.setDegree("Error"));
+        assertEquals("Degree name should be more than 5 character",e.getMessage());
     }
 
     @Test
@@ -46,7 +46,8 @@ public class EmployeeTest
     void testAddSkillFalse()
     {
         Skill emptySkill = null;
-        assertThrows(IllegalArgumentException.class,()->employee.addSkill(emptySkill));
+        Exception e = assertThrows(IllegalArgumentException.class,()->employee.addSkill(emptySkill));
+        assertEquals("Can't add empty skill",e.getMessage());
     }
 
     @Test
@@ -58,8 +59,14 @@ public class EmployeeTest
     @Test
     void testRemoveSkillFalse()
     {
-        assertThrows(IllegalArgumentException.class,()->employee.removeSkill(6));
-        assertThrows(IllegalArgumentException.class,()->employee.removeSkill(-4));
+        Exception e;
+
+        e = assertThrows(IllegalArgumentException.class,()->employee.removeSkill(6));
+        assertEquals("Skill index is out of range",e.getMessage());
+
+        e = assertThrows(IllegalArgumentException.class,()->employee.removeSkill(-4));
+        assertEquals("Skill index is out of range",e.getMessage());
+
     }
 
     @Test
@@ -73,7 +80,8 @@ public class EmployeeTest
     void testSetSkillsFalse()
     {
         ArrayList<Skill> emptySkills = new ArrayList<>();
-        assertThrows(IllegalArgumentException.class,()->employee.setSkills(emptySkills));
+        Exception e = assertThrows(IllegalArgumentException.class,()->employee.setSkills(emptySkills));
+        assertEquals("Skills can't be empty",e.getMessage());
     }
 
     @Test

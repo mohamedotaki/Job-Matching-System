@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class DatabaseTest
 {
-    static User user;
+    static User userTrue, userFalse;
 
     @Test
     void testAvailableSkillsDatabase()
@@ -35,75 +35,83 @@ public class DatabaseTest
         assertTrue(isEqual);
     }
 
+    //Testing and adding 2 users to the database one for true test one for false
     @Test
     void testAddUserTrue()
     {
-        user = new User(1, "Mr", "Mohamed",
+        userTrue = new User(1, "Mr", "Mohamed",
                 "g00346067@gmit.ie", "password12",
                 "0089212121","Mayo");
-        assertTrue(DataBase.addUser(user));
+        assertTrue(DataBase.addUser(userTrue));
+
+        userFalse = new User(2, "Mr", "duplicatedUser",
+                "g00346067@gmit.ie", "password12",
+                "0089212121","Mayo");
+        assertTrue(DataBase.addUser(userFalse));
     }
 
+    //Testing if null user or duplicated user added to database
     @Test
     void testAddUserFalse()
     {
-        User duplicatedUser = new User(2, "Mr", "duplicatedUser",
-                "g00346067@gmit.ie", "password12",
-                "0089212121","Mayo");
-        DataBase.addUser(duplicatedUser);
-        assertThrows(IllegalArgumentException.class,()-> DataBase.addUser(duplicatedUser));
+        Exception e;
+         e = assertThrows(IllegalArgumentException.class, ()-> DataBase.addUser(userFalse));
+        assertEquals("User ID already in database", e.getMessage());
 
         User emptyUser = null;
-        assertThrows(IllegalArgumentException.class,()-> DataBase.addUser(emptyUser));
+        e = assertThrows(IllegalArgumentException.class, ()-> DataBase.addUser(emptyUser));
+        assertEquals("Can't add empty user", e.getMessage());
     }
 
     @Test
     void testLoginTrue()
     {
-        assertEquals(user, DataBase.login("g00346067@gmit.ie", "password12"));
+        assertEquals(userTrue, DataBase.login("g00346067@gmit.ie", "password12"));
     }
 
     @Test
     void testLoginFalse()
     {
-        assertThrows(IllegalArgumentException.class,()-> DataBase.login("g00346067@gmit.ie", "wrongPassword"));
-        assertThrows(IllegalArgumentException.class,()-> DataBase.login("wrongEmail@gmit.ie", "password12"));
+        Exception e;
+
+        e = assertThrows(IllegalArgumentException.class,()-> DataBase.login("g00346067@gmit.ie", "wrongPassword"));
+        assertEquals("Wrong email or password",e.getMessage());
+
+        e = assertThrows(IllegalArgumentException.class,()-> DataBase.login("wrongEmail@gmit.ie", "password12"));
+        assertEquals("Wrong email or password",e.getMessage());
     }
 
     @Test
     void testUpdateUserTrue()
     {
-        user.setLocation("Galway");
-        user.setName("Mohamed Otaki");
-        assertTrue(DataBase.updateUser(user));
+        userTrue.setLocation("Galway");
+        userTrue.setName("Mohamed Otaki");
+        assertTrue(DataBase.updateUser(userTrue));
     }
 
     @Test
     void testUpdateUserFalse()
     {
-        user.setId(6);
-        user.setName("Mohamed Otaki");
-        assertThrows(IllegalArgumentException.class,()->DataBase.updateUser(user));
+        User userNotInDatabase = new User(5, "Mr", "userNotInDatabase",
+                "g00346067@gmit.ie", "password12",
+                "0089212121","Mayo");
+        Exception e = assertThrows(IllegalArgumentException.class,()->DataBase.updateUser(userNotInDatabase));
+        assertEquals("User ID was not found in database",e.getMessage());
     }
 
     @Test
     void testDeleteUserTrue()
     {
-        assertTrue(DataBase.deleteUser(user));
+        assertTrue(DataBase.deleteUser(userTrue));
     }
 
     @Test
     void testDeleteUserFalse()
     {
         User emptyUser = null;
-        assertThrows(IllegalArgumentException.class,()->DataBase.deleteUser(emptyUser));
+        Exception e = assertThrows(IllegalArgumentException.class,()->DataBase.deleteUser(emptyUser));
+        assertEquals("User was not found in database",e.getMessage());
     }
 
-
-    @Test
-    void testupdateMatchesPass()
-    {
-
-    }
 
 }

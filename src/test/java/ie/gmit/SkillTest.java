@@ -25,7 +25,8 @@ public class SkillTest
     @Test
     void testSetSkillNameFalse()
     {
-        assertThrows(IllegalArgumentException.class,()->skill.setSkillName("Error"));
+        Exception e = assertThrows(IllegalArgumentException.class,()->skill.setSkillName("Error"));
+        assertEquals("Skill name should be more than 5",e.getMessage());
     }
 
     @Test
@@ -37,8 +38,13 @@ public class SkillTest
     @Test
     void testSetSkillLevelFalse()
     {
-        assertThrows(IllegalArgumentException.class,()->skill.setSkillLevel(15));
-        assertThrows(IllegalArgumentException.class,()->skill.setSkillLevel(-5));
+        Exception e;
+
+        e = assertThrows(IllegalArgumentException.class,()->skill.setSkillLevel(15));
+        assertEquals("Skill level should be between 1 and 10",e.getMessage());
+
+        e = assertThrows(IllegalArgumentException.class,()->skill.setSkillLevel(-5));
+        assertEquals("Skill level should be between 1 and 10",e.getMessage());
     }
 
     @Test

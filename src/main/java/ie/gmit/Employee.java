@@ -21,11 +21,13 @@ public class Employee extends User
         skills = new ArrayList<>();
     }
 
+    //Method to get the employee degree
     public String getDegree()
     {
         return degree;
     }
 
+    //Method to set the degree and check if it over 5 character
     public void setDegree(String degree)
     {
         if(degree.length() <= 5) {
