@@ -67,6 +67,8 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
+      - store_artifacts:
+            path:  target/Job-Matching-System-1.0.jar
       - run: mvn dependency:go-offline
       - run:
           name: maven build
@@ -79,6 +81,6 @@ jobs:
           name: Push To Artifactory
           command: |
             ./jfrog rt config --url $ARTIFACTORY_URL --user $ARTIFACTORY_USERNAME --apikey $ARTIFACTORY_APIKEY --interactive=false
-            ./jfrog rt u "multi*/*.jar" "rmrmaven-libs-release-local" --build-name="test_build" --build-number=$CIRCLE_BUILD_NUM --flat=false
-            ./jfrog rt bce "test_build" $CIRCLE_BUILD_NUM
-            ./jfrog rt bp "test_build" $CIRCLE_BUILD_NUM
+            ./jfrog rt u "multi*/*.jar" "rmrmaven-libs-release-local" --build-name="test_build2" --build-number=$CIRCLE_BUILD_NUM --flat=false
+            ./jfrog rt bce "test_build2" $CIRCLE_BUILD_NUM
+            ./jfrog rt bp "test_build2" $CIRCLE_BUILD_NUM
