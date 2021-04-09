@@ -42,7 +42,10 @@ jobs:
             path:  target/surefire-reports
         - run:
             name: Compress Artifacts to TAR
-            command: tar -cvzf BUILD_NUM.tar target/
+            command: |
+              tar -cvzf BUILD_NUM.tar target/
+              curl -H "X-JFrog-Art-Api:AKCp8ihpdanZor2Eiacux5kbAuB3f45d1aJSoxxFjyipB1tnUNppZSVVbU7YPPRyTGxZnxqyA" -T ~repo/target/BUILD_NUM.tar "https://rmrartifact.jfrog.io/artifactory/rmrmaven-libs-release-local/TAR/BUILD_NUM.tar"
+            
         - store_artifacts:
             path: BUILD_NUM.tar
             destination: target/BUILD_NUM.tar
