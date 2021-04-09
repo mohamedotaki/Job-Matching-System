@@ -11,9 +11,12 @@ workflows:
       - integration_test:
           requires:
             - unit_tests
-      - store:
+      - store_circleci:
           requires:
-           - integration_test
+            - integration_test
+      - upload-artifact:
+          requires:
+            - integration_test
 
 executors:
   # Specifying executor to run jobs
@@ -47,7 +50,7 @@ jobs:
             name: Integration Test
             command: mvn verify
   # Job to store artifacts in CircleCI
-  store:
+  store_circleci:
      executor: doc
      steps:
         - checkout
@@ -58,3 +61,24 @@ jobs:
             path:  target/site/jacoco
         - store_artifacts:
             path:  target/surefire-reports
+  # Job to upload artifacts to Artifactory
+  upload-artifact:
+    executor: doc
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run:
+          name: Install jFrog CLI
+          command: curl -fL https://getcli.jfrog.io | sh
+      - run: mvn dependency:go-offline
+      - run:
+          name: maven build
+          command: |
+            mvn clean install
+      - run:
+          name: Push To Artifactory
+          command: |
+            ./jfrog rt config --url $ARTIFACTORY_URL --user $ARTIFACTORY_USERNAME --apikey $ARTIFACTORY_APIKEY --interactive=false
+            ./jfrog rt u "multi*/*.jar" "rmrmaven-libs-release-local" --build-name="test_build" --build-number=$CIRCLE_BUILD_NUM --flat=false
+            ./jfrog rt bce "test_build" $CIRCLE_BUILD_NUM
+            ./jfrog rt bp "test_build" $CIRCLE_BUILD_NUM
