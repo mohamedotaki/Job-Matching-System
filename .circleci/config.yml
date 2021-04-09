@@ -49,7 +49,7 @@ jobs:
             destination: target/BUILD_NUM.tar
         - run:
             name: Uploading TAR to Artifactory Repo
-            command: curl -H "X-JFrog-Art-Api:AKCp8ihpdanZor2Eiacux5kbAuB3f45d1aJSoxxFjyipB1tnUNppZSVVbU7YPPRyTGxZnxqyA" -T BUILD_NUM.tar "https://rmrartifact.jfrog.io/artifactory/rmrmaven-libs-release-local/TAR/BUILD_NUM.tar"
+            command: curl -H "X-JFrog-Art-Api:$ARTIFACTORY_APIKEY" -T BUILD_NUM.tar "https://rmrartifact.jfrog.io/artifactory/rmrmaven-libs-release-local/TAR/$CIRCLE_BUILD_NUM-BUILD_NUM.tar"
         - run: mvn dependency:go-offline
         - run:
             name: maven build
