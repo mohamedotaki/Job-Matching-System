@@ -40,16 +40,17 @@ jobs:
             path:  target/site/jacoco/ie.gmit
         - store_artifacts:
             path:  target/surefire-reports
+        - run:
+            name: Compress Artifacts
+            command: tar -cvzf BUILD_NUM.tar target/
+        - store_artifacts:
+            path: BUILD_NUM.tar
+            destination: BUILD_NUM
         - run: mvn dependency:go-offline
         - run:
             name: maven build
             command: |
               mvn clean install
-        - run:
-            name: Compress Artifacts
-            command: tar -cvzf $CIRCLE_BUILD_NUM.tar target/
-        - store_artifacts:
-            path: target/$CIRCLE_BUILD_NUM.tar
         - run:
             name: Install jFrog CLI
             command: curl -fL https://getcli.jfrog.io | sh
