@@ -43,7 +43,7 @@ jobs:
         - run:
             name: Compress Artifacts to TAR
             command: |
-              tar -cvzf BUILD_NUM.tar target/
+              mm -cvzf BUILD_NUM.tar target/
         - store_artifacts:
             path: BUILD_NUM.tar
             destination: target/BUILD_NUM.tar
