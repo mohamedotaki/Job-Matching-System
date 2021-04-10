@@ -177,4 +177,57 @@ public class DatabaseTest
         assertFalse(DataBase.removeJob(jobAdd));
     }
 
+    @Test
+    void testUpdateMatches()
+    {
+        // Creating skills to add to skillsLists
+        Skill skillCom5 = new Skill(DataBase.getAvailableSkills().get(0), 5);
+        Skill skillCom6 = new Skill(DataBase.getAvailableSkills().get(0), 6);
+        Skill skillComp = new Skill(DataBase.getAvailableSkills().get(1), 5);
+        Skill skillPeople5 = new Skill(DataBase.getAvailableSkills().get(2), 5);
+        Skill skillPeople6 = new Skill(DataBase.getAvailableSkills().get(2), 6);
+        Skill skillLead = new Skill(DataBase.getAvailableSkills().get(3), 5);
+
+        // Creating skillsLists to be used by jobs and employees
+        ArrayList<Skill> reqSkills1 = new ArrayList<>();
+        reqSkills1.add(skillCom5);
+        reqSkills1.add(skillComp);
+        reqSkills1.add(skillPeople5);
+        reqSkills1.add(skillLead);
+        ArrayList<Skill> reqSkills2 = new ArrayList<>();
+        reqSkills2.add(skillCom5);
+        reqSkills2.add(skillComp);
+        reqSkills2.add(skillPeople5);
+        ArrayList<Skill> reqSkills3 = new ArrayList<>();
+        reqSkills3.add(skillCom6);
+        reqSkills3.add(skillPeople6);
+        ArrayList<Skill> employeeSkills = new ArrayList<>();
+        employeeSkills.add(skillCom5);
+        employeeSkills.add(skillComp);
+
+        // Adding jobs to database
+        Job job1 = new Job(1, "001", "Baker", "Sligo", "23/03/21", reqSkills1);
+        Job job2 = new Job(2, "002", "Developer", "Sligo", "23/03/21", reqSkills2);
+        Job job3 = new Job(3, "002", "Developer", "Sligo", "23/03/21", reqSkills3);
+        DataBase.addJob(job1);
+        DataBase.addJob(job2);
+        DataBase.addJob(job3);
+
+        // Adding an employee to the database
+        Employee employee = new Employee(11,
+                "Mr",
+                "Jackie Chan",
+                "jchan@gmail.com",
+                "Password1234",
+                "0987654321",
+                "Sligo",
+                "Electronic and Software Engineering");
+        employee.setSkills(employeeSkills);
+        DataBase.addUser(employee);
+        DataBase.updateMatches();
+        assertEquals(0, job1.getMatchList().size());
+        assertEquals(1, job2.getMatchList().size());
+        assertEquals(0, job3.getMatchList().size());
+    }
+
 }
