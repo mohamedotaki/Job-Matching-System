@@ -16,6 +16,8 @@ import static org.junit.jupiter.api.Assertions.*;
 public class DatabaseTest
 {
     static User userTrue, userFalse;
+    static Job job;
+
 
     @Test
     void testAvailableSkillsDatabase()
@@ -113,5 +115,66 @@ public class DatabaseTest
         assertEquals("User was not found in database",e.getMessage());
     }
 
+    @Test
+    void testAddJobPass()
+    {
+        ArrayList<Skill> skillsList;
+        skillsList = new ArrayList<>();
+        Skill skillCom = new Skill("Communication", 5);
+        skillsList.add(skillCom);
+
+        Job jobInList = new Job(1,"1", "AddJobPass", "IntelliJ", "12/12/21", skillsList);
+        DataBase.addJob(jobInList);
+
+        Job jobAdd = new Job(1,"2", "AddJobPass", "IntelliJ", "12/12/21", skillsList);
+        assertTrue(DataBase.addJob(jobAdd));
+    }
+
+    @Test
+    void testAddJobDuplicate()
+    {
+        ArrayList<Skill> skillsList;
+        skillsList = new ArrayList<>();
+        Skill skillCom = new Skill("Communication", 5);
+        skillsList.add(skillCom);
+
+        Job jobInList = new Job(1,"1", "AddJobPass", "IntelliJ", "12/12/21", skillsList);
+        DataBase.addJob(jobInList);
+
+        Job jobAdd = new Job(1,"1", "AddJobPass", "IntelliJ", "12/12/21", skillsList);
+
+        Exception e = assertThrows(IllegalArgumentException.class,()->DataBase.addJob(jobAdd));
+        assertEquals("Job already in database",e.getMessage());
+    }
+
+    @Test
+    void testRemoveJobSuccess()
+    {
+        ArrayList<Skill> skillsList;
+        skillsList = new ArrayList<>();
+        Skill skillCom = new Skill("Communication", 5);
+        skillsList.add(skillCom);
+
+        Job jobInList = new Job(1,"1", "AddJobPass", "IntelliJ", "12/12/21", skillsList);
+        DataBase.addJob(jobInList);
+
+        Job jobAdd = new Job(1,"1", "AddJobPass", "IntelliJ", "12/12/21", skillsList);
+        assertTrue(DataBase.removeJob(jobAdd));
+    }
+
+    @Test
+    void testRemoveJobFail()
+    {
+        ArrayList<Skill> skillsList;
+        skillsList = new ArrayList<>();
+        Skill skillCom = new Skill("Communication", 5);
+        skillsList.add(skillCom);
+
+        Job jobInList = new Job(1,"1", "AddJobPass", "IntelliJ", "12/12/21", skillsList);
+        DataBase.addJob(jobInList);
+
+        Job jobAdd = new Job(1,"2", "AddJobPass", "IntelliJ", "12/12/21", skillsList);
+        assertFalse(DataBase.removeJob(jobAdd));
+    }
 
 }

@@ -31,14 +31,30 @@ public class DataBase
     }
 
     // Mutators
-    public boolean addJob(Job jobAdd)
+    public static boolean addJob(Job jobAdd)
     {
+        if(jobAdd.getJobId() != null) {
+            for (Job jobCheck : jobs) {
+                if (jobAdd.getJobId().equals(jobCheck.getJobId())) {
+                    throw new IllegalArgumentException("Job already in database");
+                }
+            }
+        }
         return (jobs.add(jobAdd));
     }
 
-    public boolean removeJob(Job jobRemove)
+    public static boolean removeJob(Job jobRemove)
     {
-        return (jobs.remove(jobRemove));
+        if (!jobRemove.getJobId().equals("")) {
+            for (Job jobCheck : jobs) {
+                if (jobRemove.getJobId().equals(jobCheck.getJobId())) {
+                    return (jobs.remove(jobRemove));
+                }
+            }
+        } else {
+            throw new IllegalArgumentException("Cannot Remove Job or Job does not exist");
+        }
+        return false;
     }
 
     // Accessor
