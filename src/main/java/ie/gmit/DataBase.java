@@ -31,6 +31,7 @@ public class DataBase
     }
 
     // Mutators
+    //Adding a job to the database, fails if job already exists or empty
     public static boolean addJob(Job jobAdd)
     {
         if(jobAdd != null) {
@@ -46,6 +47,7 @@ public class DataBase
         }
     }
 
+    //Removing a job from the database, fails if job id does not match or empty
     public static boolean removeJob(Job jobRemove)
     {
         if (jobRemove != null) {
@@ -54,11 +56,11 @@ public class DataBase
                     return (jobs.remove(jobRemove));
                 }
             }
+            throw new IllegalArgumentException("Please check Job ID");
         }
         else {
-            throw new IllegalArgumentException("Cannot Remove Job or Job does not exist");
+            throw new IllegalArgumentException("Enter ID to Remove Job");
         }
-        return false;
     }
 
     // Accessor

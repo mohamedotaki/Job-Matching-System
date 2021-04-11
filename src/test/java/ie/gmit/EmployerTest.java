@@ -19,7 +19,8 @@ public class EmployerTest
     //DataBase database = new DataBase();
     ArrayList<Skill> skillsList;
     Employer employer;
-    //Job job;
+    Job job;
+
 
 
     // Initializing a new valid Employer and adding 1 job to their job list
