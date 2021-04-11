@@ -7,6 +7,7 @@
 
 package ie.gmit;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -16,8 +17,43 @@ import static org.junit.jupiter.api.Assertions.*;
 public class DatabaseTest
 {
     static User userTrue, userFalse;
-    static Job job;
+    static Job jobOne, jobTwo, jobDup;
 
+    Skill skillCom5;
+    Skill skillCom6;
+    Skill skillComp;
+    Skill skillPeople5;
+    Skill skillPeople6;
+    Skill skillLead;
+    ArrayList<Skill> reqSkills1;
+    ArrayList<Skill> reqSkills2;
+    ArrayList<Skill> reqSkills3;
+    ArrayList<Skill> employeeSkills;
+    @BeforeEach
+    void init()
+    {
+        skillCom5 = new Skill(DataBase.getAvailableSkills().get(0), 5);
+        skillCom6 = new Skill(DataBase.getAvailableSkills().get(0), 6);
+        skillComp = new Skill(DataBase.getAvailableSkills().get(1), 5);
+        skillPeople5 = new Skill(DataBase.getAvailableSkills().get(2), 5);
+        skillPeople6 = new Skill(DataBase.getAvailableSkills().get(2), 6);
+        skillLead = new Skill(DataBase.getAvailableSkills().get(3), 5);
+        reqSkills1 = new ArrayList<>();
+        reqSkills1.add(skillCom5);
+        reqSkills1.add(skillComp);
+        reqSkills1.add(skillPeople5);
+        reqSkills1.add(skillLead);
+        reqSkills2 = new ArrayList<>();
+        reqSkills2.add(skillCom5);
+        reqSkills2.add(skillComp);
+        reqSkills2.add(skillPeople5);
+        reqSkills3 = new ArrayList<>();
+        reqSkills3.add(skillCom6);
+        reqSkills3.add(skillPeople6);
+        employeeSkills = new ArrayList<>();
+        employeeSkills.add(skillCom5);
+        employeeSkills.add(skillComp);
+    }
 
     @Test
     void testAvailableSkillsDatabase()
@@ -123,11 +159,19 @@ public class DatabaseTest
         Skill skillCom = new Skill("Communication", 5);
         skillsList.add(skillCom);
 
-        Job jobInList = new Job(1,"1", "AddJobPass", "IntelliJ", "12/12/21", skillsList);
-        DataBase.addJob(jobInList);
+        jobOne = new Job(1,"001", "AddJobPass", "IntelliJ", "12/12/21", skillsList);
+        DataBase.addJob(jobOne);
+        int jobListSize = DataBase.getJobs().size();
+        jobTwo = new Job(1,"002", "AddJobPass", "IntelliJ", "12/12/21", skillsList);
+        DataBase.addJob(jobTwo);
+        assertEquals(jobListSize+1, DataBase.getJobs().size());
+    }
 
-        Job jobAdd = new Job(1,"2", "AddJobPass", "IntelliJ", "12/12/21", skillsList);
-        assertTrue(DataBase.addJob(jobAdd));
+    @Test
+    void testAddJobFail()
+    {
+        Exception e = assertThrows(IllegalArgumentException.class,()->DataBase.addJob(null));
+        assertEquals("Cannot add empty Job in database",e.getMessage());
     }
 
     @Test
@@ -138,12 +182,12 @@ public class DatabaseTest
         Skill skillCom = new Skill("Communication", 5);
         skillsList.add(skillCom);
 
-        Job jobInList = new Job(1,"1", "AddJobPass", "IntelliJ", "12/12/21", skillsList);
-        DataBase.addJob(jobInList);
+        Job jobInList2 = new Job(1,"003", "AddJobPass", "IntelliJ", "12/12/21", skillsList);
+        DataBase.addJob(jobInList2);
 
-        Job jobAdd = new Job(1,"1", "AddJobPass", "IntelliJ", "12/12/21", skillsList);
+        jobDup = new Job(1,"003", "AddJobPass", "IntelliJ", "12/12/21", skillsList);
 
-        Exception e = assertThrows(IllegalArgumentException.class,()->DataBase.addJob(jobAdd));
+        Exception e = assertThrows(IllegalArgumentException.class,()->DataBase.addJob(jobDup));
         assertEquals("Job already in database",e.getMessage());
     }
 
@@ -155,11 +199,11 @@ public class DatabaseTest
         Skill skillCom = new Skill("Communication", 5);
         skillsList.add(skillCom);
 
-        Job jobInList = new Job(1,"1", "AddJobPass", "IntelliJ", "12/12/21", skillsList);
-        DataBase.addJob(jobInList);
+        int jobListCount = DataBase.getJobs().size();
+        Job jobAdd3 = new Job(1,"003", "AddJobPass", "IntelliJ", "12/12/21", skillsList);
 
-        Job jobAdd = new Job(1,"1", "AddJobPass", "IntelliJ", "12/12/21", skillsList);
-        assertTrue(DataBase.removeJob(jobAdd));
+        DataBase.removeJob(jobAdd3);
+        assertEquals(jobListCount, DataBase.getJobs().size());
     }
 
     @Test
@@ -170,45 +214,42 @@ public class DatabaseTest
         Skill skillCom = new Skill("Communication", 5);
         skillsList.add(skillCom);
 
-        Job jobInList = new Job(1,"1", "AddJobPass", "IntelliJ", "12/12/21", skillsList);
-        DataBase.addJob(jobInList);
-
-        Job jobAdd = new Job(1,"2", "AddJobPass", "IntelliJ", "12/12/21", skillsList);
+        Job jobAdd = new Job(1,"0", "AddJobPass", "IntelliJ", "12/12/21", skillsList);
         assertFalse(DataBase.removeJob(jobAdd));
     }
 
     @Test
     void testUpdateMatches()
     {
-        // Creating skills to add to skillsLists
-        Skill skillCom5 = new Skill(DataBase.getAvailableSkills().get(0), 5);
-        Skill skillCom6 = new Skill(DataBase.getAvailableSkills().get(0), 6);
-        Skill skillComp = new Skill(DataBase.getAvailableSkills().get(1), 5);
-        Skill skillPeople5 = new Skill(DataBase.getAvailableSkills().get(2), 5);
-        Skill skillPeople6 = new Skill(DataBase.getAvailableSkills().get(2), 6);
-        Skill skillLead = new Skill(DataBase.getAvailableSkills().get(3), 5);
-
-        // Creating skillsLists to be used by jobs and employees
-        ArrayList<Skill> reqSkills1 = new ArrayList<>();
-        reqSkills1.add(skillCom5);
-        reqSkills1.add(skillComp);
-        reqSkills1.add(skillPeople5);
-        reqSkills1.add(skillLead);
-        ArrayList<Skill> reqSkills2 = new ArrayList<>();
-        reqSkills2.add(skillCom5);
-        reqSkills2.add(skillComp);
-        reqSkills2.add(skillPeople5);
-        ArrayList<Skill> reqSkills3 = new ArrayList<>();
-        reqSkills3.add(skillCom6);
-        reqSkills3.add(skillPeople6);
-        ArrayList<Skill> employeeSkills = new ArrayList<>();
-        employeeSkills.add(skillCom5);
-        employeeSkills.add(skillComp);
+//        // Creating skills to add to skillsLists
+//        Skill skillCom5 = new Skill(DataBase.getAvailableSkills().get(0), 5);
+//        Skill skillCom6 = new Skill(DataBase.getAvailableSkills().get(0), 6);
+//        Skill skillComp = new Skill(DataBase.getAvailableSkills().get(1), 5);
+//        Skill skillPeople5 = new Skill(DataBase.getAvailableSkills().get(2), 5);
+//        Skill skillPeople6 = new Skill(DataBase.getAvailableSkills().get(2), 6);
+//        Skill skillLead = new Skill(DataBase.getAvailableSkills().get(3), 5);
+//
+//        // Creating skillsLists to be used by jobs and employees
+//        ArrayList<Skill> reqSkills1 = new ArrayList<>();
+//        reqSkills1.add(skillCom5);
+//        reqSkills1.add(skillComp);
+//        reqSkills1.add(skillPeople5);
+//        reqSkills1.add(skillLead);
+//        ArrayList<Skill> reqSkills2 = new ArrayList<>();
+//        reqSkills2.add(skillCom5);
+//        reqSkills2.add(skillComp);
+//        reqSkills2.add(skillPeople5);
+//        ArrayList<Skill> reqSkills3 = new ArrayList<>();
+//        reqSkills3.add(skillCom6);
+//        reqSkills3.add(skillPeople6);
+//        ArrayList<Skill> employeeSkills = new ArrayList<>();
+//        employeeSkills.add(skillCom5);
+//        employeeSkills.add(skillComp);
 
         // Adding jobs to database
-        Job job1 = new Job(1, "001", "Baker", "Sligo", "23/03/21", reqSkills1);
-        Job job2 = new Job(2, "002", "Developer", "Sligo", "23/03/21", reqSkills2);
-        Job job3 = new Job(3, "002", "Developer", "Sligo", "23/03/21", reqSkills3);
+        Job job1 = new Job(1, "010", "Baker", "Sligo", "23/03/21", reqSkills1);
+        Job job2 = new Job(2, "011", "Developer", "Sligo", "23/03/21", reqSkills2);
+        Job job3 = new Job(3, "012", "Developer", "Sligo", "23/03/21", reqSkills3);
         DataBase.addJob(job1);
         DataBase.addJob(job2);
         DataBase.addJob(job3);

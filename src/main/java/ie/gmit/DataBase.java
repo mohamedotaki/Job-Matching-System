@@ -33,25 +33,29 @@ public class DataBase
     // Mutators
     public static boolean addJob(Job jobAdd)
     {
-        if(jobAdd.getJobId() != null) {
+        if(jobAdd != null) {
             for (Job jobCheck : jobs) {
                 if (jobAdd.getJobId().equals(jobCheck.getJobId())) {
                     throw new IllegalArgumentException("Job already in database");
                 }
             }
+            return (jobs.add(jobAdd));
         }
-        return (jobs.add(jobAdd));
+        else {
+            throw new IllegalArgumentException("Cannot add empty Job in database");
+        }
     }
 
     public static boolean removeJob(Job jobRemove)
     {
-        if (!jobRemove.getJobId().equals("")) {
+        if (jobRemove != null) {
             for (Job jobCheck : jobs) {
                 if (jobRemove.getJobId().equals(jobCheck.getJobId())) {
                     return (jobs.remove(jobRemove));
                 }
             }
-        } else {
+        }
+        else {
             throw new IllegalArgumentException("Cannot Remove Job or Job does not exist");
         }
         return false;

@@ -16,10 +16,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class EmployerTest
 {
-    DataBase database = new DataBase();
+    //DataBase database = new DataBase();
     ArrayList<Skill> skillsList;
     Employer employer;
-    Job job;
+    //Job job;
+
 
     // Initializing a new valid Employer and adding 1 job to their job list
     @BeforeEach
@@ -38,15 +39,15 @@ public class EmployerTest
         Skill skillCom = new Skill("Communication", 5);
         skillsList.add(skillCom);
 
-        job = new Job(1, "001", "Baker", "Sligo", "23/03/21", skillsList);
-        employer.addJob(job);
+        //job = new Job(1, "014", "Baker", "Sligo", "23/03/21", skillsList);
+        //employer.addJob(job);
     }
 
     // Testing that a valid Job can be added to an employers job list
     @Test
     void testAddJobSuccess()
     {
-        Job jobAdd = new Job(1, "002", "Painter", "Sligo", "23/03/21", skillsList);
+        Job jobAdd = new Job(1, "014", "Painter", "Sligo", "23/03/21", skillsList);
         int jobListSize = DataBase.getJobs().size();
         employer.addJob(jobAdd);
         assertEquals(jobListSize+1, DataBase.getJobs().size());
@@ -75,7 +76,7 @@ public class EmployerTest
     @Test
     void testRemoveJobFail1()
     {
-        Exception e1 = assertThrows(IllegalArgumentException.class, () -> employer.removeJob("003"));
+        Exception e1 = assertThrows(IllegalArgumentException.class, () -> employer.removeJob("100"));
         assertEquals("Error removing job", e1.getMessage());
 
         Employer employer2 = new Employer(2,
