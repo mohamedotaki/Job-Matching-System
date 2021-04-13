@@ -46,8 +46,8 @@ jobs:
       executor: doc
       steps:
         - checkout
-        - attach_workspace:
-            at: ./target
+#        - attach_workspace:
+#            at: ./target
         - run:
             name: Tests
             command: mvn -Dmaven.test.skip=true verify
@@ -58,7 +58,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: ./target
+          at: ./target/
       - run:
           name: Compress Artifacts to TAR
           command: |
