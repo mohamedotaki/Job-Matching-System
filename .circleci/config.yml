@@ -58,14 +58,14 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: /tmp/target/
+          at: /tmp/workspace/
       - run:
           name: Compress Artifacts to TAR
           command: |
-            tar -cvzf BUILD_NUM.tar /tmp/target/
+            tar -cvzf BUILD_NUM.tar /tmp/workspace/target/
       - store_artifacts:
           path: BUILD_NUM.tar
-          destination: /tmp/target/BUILD_NUM.tar
+          destination: /tmp/workspace/target/BUILD_NUM.tar
       - run:
           name: Uploading TAR to Artifactory Repo
           command: curl -H "X-JFrog-Art-Api:$ARTIFACTORY_APIKEY" -T BUILD_NUM.tar "https://rmrartifact.jfrog.io/artifactory/rmrmaven-libs-release-local/$CIRCLE_BUILD_NUM/TAR/$CIRCLE_BUILD_NUM-BUILD.tar"
@@ -81,9 +81,10 @@ jobs:
           name: Push To Artifactory
           command: |
             ./jfrog rt config --url $ARTIFACTORY_URL --user $ARTIFACTORY_USERNAME --apikey $ARTIFACTORY_APIKEY --interactive=false
-            ./jfrog rt u "/tmp/target/*.jar" rmrmaven-libs-release-local/$CIRCLE_BUILD_NUM/ --build-name="test_build3" --build-number=$CIRCLE_BUILD_NUM --flat=false
-            ./jfrog rt u "/tmp/target/surefire-reports/" rmrmaven-libs-release-local/$CIRCLE_BUILD_NUM/surefire-reports/
-            ./jfrog rt u "/tmp/target/" rmrmaven-libs-release-local/$CIRCLE_BUILD_NUM/$CIRCLE_BUILD_NUM-BUILD.zip --archive zip
+            ./jfrog rt u "/tmp/workspace/target/*.jar" rmrmaven-libs-release-local/$CIRCLE_BUILD_NUM/ --build-name="test_build3" --build-number=$CIRCLE_BUILD_NUM --flat=false
+            ./jfrog rt u "/tmp/workspace/target/site/jacoco/ie.gmit/" rmrmaven-libs-release-local/$CIRCLE_BUILD_NUM/site/jacoco/ie.gmit/
+            ./jfrog rt u "/tmp/workspace/target/surefire-reports/" rmrmaven-libs-release-local/$CIRCLE_BUILD_NUM/surefire-reports/
+            ./jfrog rt u "/tmp/workspace/target/" rmrmaven-libs-release-local/$CIRCLE_BUILD_NUM/$CIRCLE_BUILD_NUM-BUILD.zip --archive zip
             ./jfrog rt bce "test_build3" $CIRCLE_BUILD_NUM
             ./jfrog rt bp "test_build3" $CIRCLE_BUILD_NUM
 
