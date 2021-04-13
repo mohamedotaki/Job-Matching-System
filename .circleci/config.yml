@@ -31,13 +31,13 @@ jobs:
       - checkout
       - run: mvn package
       - persist_to_workspace:
-         root: ./
+         root: ~/repo/
          paths:
-           - target/
+           - tmp/
       - store_artifacts:
             path:  target/Job-Matching-System-1.0.jar
       - store_artifacts:
-            path:  target/site/jacoco/ie.gmit
+            path:  target/site/jacoco/
       - store_artifacts:
             path:  target/surefire-reports
 
@@ -58,7 +58,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: ./target/
+          at: ~/repo/tmp/
       - run:
           name: Compress Artifacts to TAR
           command: |
@@ -69,7 +69,7 @@ jobs:
       - run:
           name: Uploading TAR to Artifactory Repo
           command: curl -H "X-JFrog-Art-Api:$ARTIFACTORY_APIKEY" -T BUILD_NUM.tar "https://rmrartifact.jfrog.io/artifactory/rmrmaven-libs-release-local/$CIRCLE_BUILD_NUM/TAR/$CIRCLE_BUILD_NUM-BUILD.tar"
-      - run: mvn dependency:go-offline
+#      - run: mvn dependency:go-offline
 #      - run:
 #          name: Maven Build
 #          command: |
@@ -81,10 +81,10 @@ jobs:
           name: Push To Artifactory
           command: |
             ./jfrog rt config --url $ARTIFACTORY_URL --user $ARTIFACTORY_USERNAME --apikey $ARTIFACTORY_APIKEY --interactive=false
-            ./jfrog rt u "./target/*.jar" rmrmaven-libs-release-local/$CIRCLE_BUILD_NUM/ --build-name="test_build3" --build-number=$CIRCLE_BUILD_NUM --flat=false
-            ./jfrog rt u "./target/site/jacoco/ie.gmit/" rmrmaven-libs-release-local/$CIRCLE_BUILD_NUM/site/jacoco/ie.gmit/
-            ./jfrog rt u "./target/surefire-reports/" rmrmaven-libs-release-local/$CIRCLE_BUILD_NUM/surefire-reports/
-            ./jfrog rt u "./target/" rmrmaven-libs-release-local/$CIRCLE_BUILD_NUM/$CIRCLE_BUILD_NUM-BUILD.zip --archive zip
+            ./jfrog rt u "tmp/target/*.jar" rmrmaven-libs-release-local/$CIRCLE_BUILD_NUM/ --build-name="test_build3" --build-number=$CIRCLE_BUILD_NUM --flat=false
+            ./jfrog rt u "tmp/target/site/jacoco/ie.gmit/" rmrmaven-libs-release-local/$CIRCLE_BUILD_NUM/site/jacoco/ie.gmit/
+            ./jfrog rt u "tmp/target/surefire-reports/" rmrmaven-libs-release-local/$CIRCLE_BUILD_NUM/surefire-reports/
+            ./jfrog rt u "tmp/target/" rmrmaven-libs-release-local/$CIRCLE_BUILD_NUM/$CIRCLE_BUILD_NUM-BUILD.zip --archive zip
             ./jfrog rt bce "test_build3" $CIRCLE_BUILD_NUM
             ./jfrog rt bp "test_build3" $CIRCLE_BUILD_NUM
 
