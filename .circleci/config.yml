@@ -37,7 +37,7 @@ jobs:
       - store_artifacts:
             path:  target/Job-Matching-System-1.0.jar
       - store_artifacts:
-            path:  target/site/jacoco/
+            path:  target/site/jacoco/ie.gmit/
       - store_artifacts:
             path:  target/surefire-reports
 
