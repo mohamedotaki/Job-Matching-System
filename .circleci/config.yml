@@ -46,8 +46,6 @@ jobs:
       executor: doc
       steps:
         - checkout
-#        - attach_workspace:
-#            at: ./target
         - run:
             name: Tests
             command: mvn -Dmaven.test.skip=true verify
@@ -69,11 +67,6 @@ jobs:
       - run:
           name: Uploading TAR to Artifactory Repo
           command: curl -H "X-JFrog-Art-Api:$ARTIFACTORY_APIKEY" -T BUILD_NUM.tar "https://rmrartifact.jfrog.io/artifactory/rmrmaven-libs-release-local/$CIRCLE_BUILD_NUM/TAR/$CIRCLE_BUILD_NUM-BUILD.tar"
-#      - run: mvn dependency:go-offline
-#      - run:
-#          name: Maven Build
-#          command: |
-#            mvn clean install
       - run:
           name: Install jFrog CLI
           command: curl -fL https://getcli.jfrog.io | sh 
